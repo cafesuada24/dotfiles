@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+STOW_FOLDERS='gitconfig,tmux,zsh,nvim'
+
+DOTFILES_HOME="$HOME/.dotfiles"
+
+pushd
+for folder in $(echo $STOW_FOLDERS | sed 's/,/ /g')
+do
+	echo "Adding $folder"
+	stow $folder -t $HOME -v
+done
+popd
