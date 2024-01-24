@@ -8,9 +8,22 @@ return {
   config = function()
     local builtin = require('telescope.builtin')
     local opts = { noremap = true, silent = true }
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, opts)
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, opts)
-    vim.keymap.set('n', '<leader>fb', builtin.buffers, opts)
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, opts)
+    local keymap = vim.keymap.set
+
+    keymap('n', '<leader>ff', builtin.find_files, opts)
+    keymap('n', '<leader>fg', builtin.live_grep, opts)
+    keymap('n', '<leader>fb', builtin.buffers, opts)
+    keymap('n', '<leader>fh', builtin.help_tags, opts)
+    keymap('n', '<C-p>', builtin.git_files, opts)
+    --[[
+    keymap('n', '<leader>fws', function()
+      local word = vim.fn.expand('<cword>')
+      builtin.grep_string({ search = word })
+    end)
+    keymap('n', '<leader>fWs', function()
+      local word = vim.fn.expand('<cWORD>')
+      builtin.grep_string({ search = word })
+    end)
+    ]]--
   end
 }

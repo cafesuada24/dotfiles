@@ -14,5 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Bootstrap end
 
-require('lazy').setup('serein.plugins')
+require('lazy').setup({
+  spec = 'serein.plugins',
+  change_detection = { notify = false },
+})
 
