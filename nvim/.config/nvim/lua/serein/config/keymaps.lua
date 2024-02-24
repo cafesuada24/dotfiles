@@ -9,3 +9,7 @@ local keymap = vim.api.nvim_set_keymap
 keymap('', '<Space>', '<Nop>', opts)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+
+keymap('v', 'J', ":m '>+1<CR>gv=gv", opts)
+keymap('v', 'K', ":m '<-2<CR>gv=gv", opts)
