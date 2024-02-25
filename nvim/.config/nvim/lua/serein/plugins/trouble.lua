@@ -23,10 +23,10 @@ return {
     local opts = { noremap = true, silent = true }
 
     keymap('n', '<leader>tt', trouble.toggle, opts)
-    keymap('n', '<leader>tn', function()
+    keymap('n', '<leader>]d', function()
       trouble.next({skip_groups = true, jump = true})
     end, opts)
-    keymap('n', '<leader>tp', function()
+    keymap('n', '<leader>[d', function()
       trouble.previous({skip_groups = true, jump = true})
     end, opts)
   end,
