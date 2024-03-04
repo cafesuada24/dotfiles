@@ -12,6 +12,7 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # Other softwares
 export VIMCONFIG="$XDG_CONFIG_HOME/nvim"
+export JAVA_HOME="$HOME/.env/java/jre1.8.0_401/"
 
 # 
 export KEYTIMEOUT=1
