@@ -4,7 +4,7 @@ STOW_FOLDERS='gitconfig,tmux,zsh,nvim'
 
 DOTFILES_HOME="$HOME/.dotfiles"
 
-pushd
+pushd $DOT_FILES
 for folder in $(echo $STOW_FOLDERS | sed 's/,/ /g')
 do
 	echo "Adding $folder"
