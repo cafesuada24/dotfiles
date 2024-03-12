@@ -25,6 +25,6 @@ keymap('n', '<leader>tn', ':tabnext<CR>', opts)
 keymap('n', '<leader>tp', ':tabprev<CR>', opts)
 
 keymap('v', '<', '<gv', opts)
-keymap('v', '<', '>gv', opts)
+keymap('v', '>', '>gv', opts)
 
 
