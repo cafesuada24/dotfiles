@@ -1,5 +1,6 @@
 zsh/.config/zsh/plugins/*
 !zsh/.config/zsh/plugins/plugins.zsh
+zsh/.config/zsh/.zcompdump
 
 tmux/.config/tmux/plugins/*
 :qa
