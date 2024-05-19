@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
-STOW_FOLDERS='gitconfig,tmux,nvim,zsh,"cht.sh"'
+STOW_FOLDERS='gitconfig,tmux,nvim,zsh,cht.sh'
 
 DOTFILES_HOME=$HOME/.dotfiles
 
-pushd $DOT_FILES
+pushd $DOTFILES_HOME
 for folder in $(echo $STOW_FOLDERS | sed 's/,/ /g')
 do
     echo "Removing $folder"
