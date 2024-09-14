@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+STOW_FOLDERS='zsh'
+
+DOTFILES_HOME=$HOME/.dotfiles
+
+pushd $DOTFILES_HOME
+for folder in $(echo $STOW_FOLDERS | sed 's/,/ /g')
+do
+    echo "Removing $folder"
+    stow -D $folder -v
+done
+popd
