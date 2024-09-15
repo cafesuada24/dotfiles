@@ -2,3 +2,4 @@ zsh/.config/zsh/plugins/*
 !zsh/.config/zsh/plugins/plugins.zsh
 
 tmux/.config/tmux/tmux/plugins/*
+.zcompdump
