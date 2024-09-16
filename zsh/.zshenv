@@ -20,6 +20,7 @@ export HISTSAVE=10000
 
 # Other softwares
 export VIMCONFIG="$XDG_CONFIG_HOME/nvim"
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 
 # Man pages
 export MANPAGER='nvim +Man!'
