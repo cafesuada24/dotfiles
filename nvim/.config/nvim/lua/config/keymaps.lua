@@ -8,4 +8,13 @@ M.init = function()
 
 end
 
+M.fzf = {
+    {
+        '<C-p>',
+        '<cmd>FZF<cr>',
+        silent = true,
+        desc = 'Open FZF'
+    },
+}
+
 return M
