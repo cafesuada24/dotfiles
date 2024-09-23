@@ -1,1 +1,1 @@
-require('sererin')
+require('serein')
