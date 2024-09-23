@@ -1,3 +1,3 @@
 -- Leader
-vim.opt.mapleader = " "
-vim.opt.maplocalleader = "\\"
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
