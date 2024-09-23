@@ -3,3 +3,5 @@ zsh/.config/zsh/plugins/*
 
 tmux/.config/tmux/tmux/plugins/*
 .zcompdump
+
+lazy-lock.json
