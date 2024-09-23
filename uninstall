@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-STOW_FOLDERS='zsh,conda'
+STOW_FOLDERS='zsh,conda,nvim'
 
 DOTFILES_HOME=$HOME/.dotfiles
 
