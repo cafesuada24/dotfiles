@@ -1,1 +1,1 @@
-require('serein')
+require('config')
