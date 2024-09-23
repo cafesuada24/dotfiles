@@ -8,5 +8,5 @@ require("config.lazy")
 -- Other configurations
 require("config.options")
 -- require("config.colorscheme")
--- require("config.keymaps")
+require("config.keymaps").init()
 -- require("config.commands")
