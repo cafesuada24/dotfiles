@@ -20,3 +20,7 @@ fi
 # >>> nvm initialize >>>
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # <<< nvm initiazlize <<<
+
+# >>> fzf intitalize >>>
+[ -d /opt/fzf ] && export PATH=$PATH:/opt/fzf/bin
+# <<< fzf initialize <<<
