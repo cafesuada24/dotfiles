@@ -24,3 +24,9 @@ fi
 # >>> fzf intitalize >>>
 [ -d /opt/fzf ] && export PATH=$PATH:/opt/fzf/bin
 # <<< fzf initialize <<<
+
+# >>> starship init >>>
+if command -v starship &> /dev/null; then
+    eval "$(starship init zsh)"
+fi
+# <<< starship init >>>

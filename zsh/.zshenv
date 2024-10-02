@@ -23,6 +23,10 @@ export NVIMCONFIG="$XDG_CONFIG_HOME/nvim"
 export NVIMDATA="$XDG_DATA_HOME/nvim"
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 
+# Starship
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
+
 # JAVA
 export JAVA_HOME="/usr/local/java/jdk-23-oracle-x64"
 
