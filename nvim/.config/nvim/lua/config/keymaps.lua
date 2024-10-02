@@ -5,11 +5,17 @@ M.init = function()
     
     map('n', '<leader>nh', '<cmd>nohlsearch<CR>')
 
-        -- Window Navigation
-    map("n", "<C-h>", "<C-w>h")
-    map("n", "<C-l>", "<C-w>l")
-    map("n", "<C-k>", "<C-w>k")
-    map("n", "<C-j>", "<C-w>j")
+    -- Window Navigation
+    map('n', '<C-h>', '<C-w>h')
+    map('n', '<C-l>', '<C-w>l')
+    map('n', '<C-k>', '<C-w>k')
+    map('n', '<C-j>', '<C-w>j')
+
+    -- Window resizing
+    map('n', '<C-Left>', '<C-w><')
+    map('n', '<C-Right>', '<C-w>>')
+    map('n', '<C-Up>', '<C-w>+')
+    map('n', '<C-Down>', '<C-w>-')
     
 
     -- Keymappings
@@ -46,4 +52,5 @@ M.lspconfig = function(opts)
       vim.lsp.buf.format { async = true }
     end, opts)
 end
+
 return M
