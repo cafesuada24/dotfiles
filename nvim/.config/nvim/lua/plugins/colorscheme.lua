@@ -2,10 +2,11 @@ return {
     "savq/melange-nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
+    init = function()
+        vim.opt.background = 'dark'
+        vim.opt.termguicolors = true
+    end,
     config = function() 
-	vim.opt.background = 'dark'
-	vim.opt.termguicolors = true
-	vim.cmd.colorscheme 'melange'
+        vim.cmd.colorscheme 'melange'
     end
 }
