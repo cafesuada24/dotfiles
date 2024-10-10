@@ -1,4 +1,5 @@
 local opt = vim.opt
+local g = vim.g
 
 -- Encoding
 opt.encoding = 'utf-8'
@@ -33,3 +34,7 @@ opt.ruler = true
 
 -- Clipboard
 opt.clipboard = 'unnamedplus'
+
+-- Providers
+g.python3_host_prog = '/home/serein/miniforge3/envs/nvim/bin/python'
+
