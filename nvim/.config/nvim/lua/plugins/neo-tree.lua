@@ -9,15 +9,18 @@ return {
     },
     
     opts = {
-        follow_current_file = true,
         filesystem = {
+            follow_current_file = {
+                enabled = true,
+            },
             filtered_items = {
                 visible = true,
                 show_hidden_count = true,
                 hide_dotfiles = false,
-                hide_gitignore = false,
+                hide_gitignored = false,
                 hide_by_name = {
                     '__pycache__',
+                    'node_modules'
                 }
             },
         }
