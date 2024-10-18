@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 selected=`cat "$XDG_CONFIG_HOME/tmux/.tmux-cht-languages" "$XDG_CONFIG_HOME/tmux/.tmux-cht-command" | fzf`
 
@@ -6,8 +6,7 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-printf "Enter Query: "
-read query
+read -p "Enter Query: " query
 
 if grep -qs "$selected" "$XDG_CONFIG_HOME/tmux/.tmux-cht-languages"; then
     query=`echo $query | tr ' ' '+'`
