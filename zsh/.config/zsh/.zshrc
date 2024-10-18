@@ -30,3 +30,9 @@ if command -v starship &> /dev/null; then
     eval "$(starship init zsh)"
 fi
 # <<< starship init >>>
+
+# >>> TMUX >>>
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
+# <<< TMUX <<<
