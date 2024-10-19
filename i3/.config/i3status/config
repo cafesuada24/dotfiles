@@ -5,7 +5,7 @@ general {
 
 order += "volume master"
 order += "disk /"
-order += "battery all"
+order += "battery 0"
 order += "load"
 order += "tztime local"
 
@@ -17,8 +17,10 @@ volume master {
     mixer_idx = 0
 }
 
-battery all {
+battery 0 {
     format = "%status %percentage %remaining"
+    last_full_capacity = true
+    integer_battery_capacity = true
 }
 
 tztime local {
