@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-workspaces="${HOME}/projects"
+workspaces="${HOME}/projects,${HOME}/courseworks,$HOME/source_code"
 
 if [[ $# -eq 1 ]]; then
     selected=$1
