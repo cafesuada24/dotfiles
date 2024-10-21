@@ -2,24 +2,26 @@ local M = {}
 
 M.init = function()
     local map = vim.keymap.set
+
+    local opts = { noremap = true, silent = true }
     
-    map('n', '<leader>nh', '<cmd>nohlsearch<CR>')
+    map('n', '<leader>nh', '<cmd>nohlsearch<CR>', opts)
 
     -- Window Navigation
-    map('n', '<C-h>', '<C-w>h')
-    map('n', '<C-l>', '<C-w>l')
-    map('n', '<C-k>', '<C-w>k')
-    map('n', '<C-j>', '<C-w>j')
+    map('n', '<C-h>', '<C-w>h', opts)
+    map('n', '<C-l>', '<C-w>l', opts)
+    map('n', '<C-k>', '<C-w>k', opts)
+    map('n', '<C-j>', '<C-w>j', opts)
 
     -- Window resizing
-    map('n', '<C-Left>', '<C-w><')
-    map('n', '<C-Right>', '<C-w>>')
-    map('n', '<C-Up>', '<C-w>+')
-    map('n', '<C-Down>', '<C-w>-')
-    
+    map('n', '<C-Left>', '<C-w><', opts)
+    map('n', '<C-Right>', '<C-w>>', opts)
+    map('n', '<C-Up>', '<C-w>+', otps)
+    map('n', '<C-Down>', '<C-w>-', opts)
 
     -- Keymappings
-
+    map('n', '<C-c>', '<Esc>', opts)
+    map('i', '<C-c>', '<Esc>', opts)
 end
 
 M.fzf = {
