@@ -4,6 +4,16 @@ local g = vim.g
 -- Encoding
 opt.encoding = 'utf-8'
 
+-- Scroll
+opt.scrolloff = 10
+
+-- Backup
+opt.backup = false
+opt.writebackup = false
+
+-- Update
+opt.updatetime = 300
+
 -- Terminal
 opt.termguicolors = true
 
@@ -19,8 +29,15 @@ opt.shiftwidth = 4
 opt.tabstop = 4
 opt.shiftround = true
 
+-- Case
+opt.smartcase = true
+
 -- Syntax
 opt.syntax = 'on' 
+opt.showmatch = true
+
+-- Tabcompletion
+opt.wildmode = 'list:longest'
 
 -- Cursor
 opt.cursorline = true
