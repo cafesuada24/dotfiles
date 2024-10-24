@@ -1,6 +1,7 @@
 return {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v3.x',
+    cmd = 'Neotree',
     dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
@@ -9,7 +10,10 @@ return {
     },
     
     opts = {
+        sources = { 'filesystem', 'buffers', 'git_status' },
+        open_files_do_not_replace_types = { 'terminal', 'trouble', 'Trouble', 'qf', 'Outline' },
         filesystem = {
+            use_libuv_file_watcher = true,
             follow_current_file = {
                 enabled = true,
             },

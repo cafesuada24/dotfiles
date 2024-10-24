@@ -92,9 +92,21 @@ M.neo_tree = {
     {
         '<tab>',
         '<cmd>Neotree toggle<CR>',
-        desc = 'Toggle neotree',
-        mode = 'n'
-    }
+        desc = 'Toggle neotree (ROOT Dir)',
+        mode = 'n',
+    },
+    {
+        '<leader>ge',
+        '<cmd>Neotree toggle source=git_status<cr>',
+        desc = 'Toggle neotree gitstatus',
+        mode = 'n',
+    },
+    {
+        '<leader>be',
+        '<cmd>Neotree toggle source=buffers<cr>',
+        desc = 'Toggle neotree buffers',
+        mode = 'n',
+    },
 }
 
 
