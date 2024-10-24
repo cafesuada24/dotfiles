@@ -18,6 +18,7 @@ opt.updatetime = 300
 opt.termguicolors = true
 
 -- Number column
+opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 2
 
