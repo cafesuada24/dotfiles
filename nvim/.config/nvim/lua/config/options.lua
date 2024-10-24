@@ -34,7 +34,7 @@ opt.shiftround = true
 opt.smartcase = true
 
 -- Syntax
-opt.syntax = 'on' 
+opt.syntax = 'off' 
 opt.showmatch = true
 
 -- Tabcompletion
