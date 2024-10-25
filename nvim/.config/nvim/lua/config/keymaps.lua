@@ -16,7 +16,7 @@ M.init = function()
     -- Window resizing
     map('n', '<C-Left>', '<C-w><', opts)
     map('n', '<C-Right>', '<C-w>>', opts)
-    map('n', '<C-Up>', '<C-w>+', otps)
+    map('n', '<C-Up>', '<C-w>+', opts)
     map('n', '<C-Down>', '<C-w>-', opts)
 
     -- Keymappings
