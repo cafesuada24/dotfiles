@@ -41,3 +41,9 @@ fi
 # >>> FZF >>>
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 # <<< FZF <<<
+
+
+# <<< KEYRING <<<
+export $(gnome-keyring-daemon --start)
+
+# >>> KEYRING >>>

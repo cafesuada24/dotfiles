@@ -38,8 +38,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Enable keyrings
-exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -200,6 +198,9 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+# Enable keyrings
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
 
 
 ####################################
