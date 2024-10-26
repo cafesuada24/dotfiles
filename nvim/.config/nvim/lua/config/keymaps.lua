@@ -4,7 +4,7 @@ M.init = function()
     local map = vim.keymap.set
 
     local opts = { noremap = true, silent = true }
-    
+
     map('n', '<leader>nh', '<cmd>nohlsearch<CR>', opts)
 
     -- Window Navigation

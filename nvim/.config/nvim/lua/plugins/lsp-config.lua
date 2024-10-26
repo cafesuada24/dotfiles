@@ -6,22 +6,27 @@ return {
     lazy = false,
 
     dependencies = {
+        'williamboman/mason.nvim',
         'mason-lspconfig.nvim',
         'hrsh7th/cmp-nvim-lsp',
     },
 
     opts = function()
-        local ret = {
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        local has_cmp, cmp = pcall(require, 'cmp_nvim_lsp')
+        if has_cmp then
+            capabilities = cmp.default_capabilities(capabilities)
+        end
+
+
+        return {
             diagnostics = {
                 underline = true,
                 update_in_insert = false,
                 virtual_text = {
-                spacing = 4,
-                source = 'if_many',
-                prefix = '●',
-                -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-                -- this only works on a recent 0.10.0 build. Will be set to '●' when not supported
-                -- prefix = 'icons',
+                    spacing = 4,
+                    source = 'if_many',
+                    prefix = '●',
                 },
                 severity_sort = true,
             },
@@ -30,51 +35,58 @@ return {
                 exclude = { 'vue' },
             },
             codelens = {
-                enabled = true,
+                enabled = false,
             },
             document_highlight = {
                 enabled = true,
             },
+            capabilities = capabilities,
+            -- capabilities = {
+            --     workspace = {
+            --         fileOperations = {
+            --             didRename = true,
+            --             willRename = true,
+            --         },
+            --     }
+            -- },
+            format = {
+                formatting_options = nil,
+                timeout_ms = nil,
+            },
             servers = {
-                Lua = {
-                    workspace = {
-                        checkThirdParty = false,
-                    },
-                    codeLens = {
-                        enable = true,
-                    },
-                    completion = {
-                        callSnippet = 'Replace',
-                    },
-                    doc = {
-                        privateName = { '^_' },
-                    },
-                    hint = {
-                        enable = true,
-                        setType = false,
-                        paramType = true,
-                        paramName = 'Disable',
-                        semicolon = 'Disable',
-                        arrayIndex = 'Disable',
+                lua_ls = {
+                    settings = {
+                        Lua = {
+                            workspace = {
+                                checkThirdParty = false,
+                            },
+                            codeLens = {
+                                enable = true,
+                            },
+                            completion = {
+                                callSnippet = 'Replace',
+                            },
+                            hint = {
+                                enable = true,
+                            },
+                        },
                     },
                 },
-            }
-        }
+            },
 
-        return ret
+            setup = {},
+        }
     end,
 
     config = function(_, opts)
-        local nvim_lsp = require('lspconfig')
-        -- nvim_lsp.setup(opts)
-
-        local capabilities = require('cmp').default_capabilities
+        vim.diagnostic.config(opts.diagnostics)
+        local lspconfig = require('lspconfig')
         require('mason-lspconfig').setup_handlers({
-            function (server_name)
-                nvim_lsp[server_name].setup({
-                    capabilities = capabilities,
-                })
-            end,
+            function(server_name)
+                local server_opts = opts.servers[server_name] or {}
+                server_opts.capabilities = opts.capabilities
+                lspconfig[server_name].setup(server_opts)
+            end
         })
     end
 }

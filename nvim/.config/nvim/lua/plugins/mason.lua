@@ -1,5 +1,6 @@
 return {
     'williamboman/mason.nvim',
-    lazy = false,
-    opts = {}
+    cmd = 'Mason',
+    build = ':MasonUpdate',
+    opts = {},
 }
