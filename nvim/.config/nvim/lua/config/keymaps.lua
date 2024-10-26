@@ -33,6 +33,15 @@ M.fzf = {
     },
 }
 
+M.fzf_lua = {
+    {
+        '<C-p>',
+        "<cmd>lua require('fzf-lua').files()<CR>",
+        silent = true,
+        desc = 'FZF files'
+    }
+}
+
 M.lspconfig = function(opts)
     local map = vim.keymap.set 
     -- Enable completion triggered by <c-x><c-o>
