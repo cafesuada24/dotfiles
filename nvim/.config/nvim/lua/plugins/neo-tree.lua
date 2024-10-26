@@ -8,7 +8,7 @@ return {
         'MunifTanjim/nui.nvim',
         -- '3rd/image.nvim', -- Optional image support in preview window: See `# Preview Mode` for more information
     },
-    
+
     opts = {
         sources = { 'filesystem', 'buffers', 'git_status' },
         open_files_do_not_replace_types = { 'terminal', 'trouble', 'Trouble', 'qf', 'Outline' },
@@ -33,4 +33,4 @@ return {
     keys = require('config.keymaps').neo_tree,
 
     lazy = false,
-} 
+}
