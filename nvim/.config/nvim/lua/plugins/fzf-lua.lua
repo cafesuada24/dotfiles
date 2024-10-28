@@ -9,23 +9,33 @@ return {
             buid = './install --bin',
         },
 
-        'nvim-tree/nvim-web-devicons',
+        -- 'nvim-tree/nvim-web-devicons',
     },
 
     keys = require('config.keymaps').fzf_lua,
 
     opts = {
-        fzf_colors = true,
         files = {
             git_icons = false,
             file_icons = false,
+            color_icons = false,
         },
+        grep = {
+            git_icons = false,
+            file_icons = false,
+            color_icons = false,
+        },
+        buffers = {
+            git_icons = false,
+            file_icons = false,
+            color_icons = false,
+        },
+        -- fzf_colors = true,
+
         fzf_opts = {
             -- ['--no-scrollbar'] = true,
-            ['--ansi'] = false,
-            ['--info'] = 'default',
+            -- ['--ansi'] = false,
             ['--layout'] = 'reverse-list',
-            ['--no-scrollbar'] = true,
         },
         -- defaults = {
         --     formatter = 'path.dirname_first',
@@ -42,7 +52,8 @@ return {
             --     ueberzug_scaler = 'fit_contain',
             -- },
             codeaction_native = {
-                pager = [[delta --side-by-side width=$FZF_PREVIEW_COLUMNS --hunk-header-style='omit' --file-style='omit']]
+                pager =
+                [[delta --side-by-side width=$FZF_PREVIEW_COLUMNS --hunk-header-style='omit' --file-style='omit']]
             }
         },
         ui_select = function(fzf_opts, items)
@@ -70,7 +81,6 @@ return {
             } or {
                 winopts = {
                     width = 0.5,
-                    -- height is number of items, with a max of 80% screen height
                     height = math.floor(math.min(vim.o.lines * 0.8, #items + 2) + 0.5),
                 },
             })
@@ -100,6 +110,18 @@ return {
         --     },
         -- },
         lsp = {
+            git_icons = false,
+            file_icons = false,
+            color_icons = false,
+            symbols = {
+                symbol_hl = function(s)
+                    return "TroubleIcon" .. s
+                end,
+                symbol_fmt = function(s)
+                    return s:lower() .. "\t"
+                end,
+                child_prefix = false,
+            },
             code_actions = {
                 previewer = vim.fn.executable('delta') == 1 and 'codeaction_native' or nil,
             }
