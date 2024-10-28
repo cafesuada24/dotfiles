@@ -3,9 +3,7 @@ return {
 
     build = ':TSUpdate',
 
-    event = { 'VeryLazy' },
-
-    lazy = vim.fn.argc(-1) == 0,
+    event = { 'BufReadPre', 'BufNewFile' },
 
     opts = {
         highlight = { enable = true },
