@@ -39,6 +39,13 @@ M.fzf_lua = {
         "<cmd>lua require('fzf-lua').files()<CR>",
         silent = true,
         desc = 'FZF files'
+    },
+    {
+        '<leader>ca',
+        '<cmd>FzfLua lsp_code_actions<cr>',
+        -- map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+        desc = 'Open code action',
+        mode = {'n', 'v'}
     }
 }
 
@@ -57,7 +64,6 @@ M.lspconfig = function(opts)
     end, opts)
     map('n', '<leader>D', vim.lsp.buf.type_definition, opts)
     map('n', '<leader>rn', vim.lsp.buf.rename, opts)
-    map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
     map('n', 'gr', vim.lsp.buf.references, opts)
     map('n', '<leader>f', function()
       vim.lsp.buf.format { async = true }
