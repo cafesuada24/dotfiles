@@ -19,11 +19,11 @@ font pango:Ubuntu Mono 14
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-
-
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
+
+exec --no-startup-id /usr/bin/dbus-launch
 
 # Start picom
 exec --no-startup-id picom --config $XDG_CONFIG_HOME/picom/picom.conf
