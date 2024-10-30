@@ -1,5 +1,27 @@
-local opt = vim.opt
 local g = vim.g
+
+g.markdown_recommended_style = 0
+
+-- Providers
+g.python3_host_prog = '/home/serein/miniforge3/envs/nvim/bin/python'
+
+
+local opt = vim.opt
+
+opt.confirm = true
+opt.showmode = false -- We have status line
+opt.shortmess:append({ W = true, I = true, c = true, C = true })
+
+-- Menu
+opt.completeopt = 'menu,menuone,noselect'
+
+
+-- Smoothscroll
+opt.smoothscroll = true
+
+
+-- Wrap
+opt.wrap = false
 
 -- Encoding
 opt.encoding = 'utf-8'
@@ -30,6 +52,13 @@ opt.shiftwidth = 4
 opt.tabstop = 4
 opt.shiftround = true
 
+-- Popup
+opt.pumblend = 10
+opt.pumheight = 10
+
+-- Grep
+opt.grepprg = 'rg --vimgrep'
+
 -- Case
 opt.smartcase = true
 
@@ -38,7 +67,7 @@ opt.syntax = 'off'
 opt.showmatch = true
 
 -- Tabcompletion
-opt.wildmode = 'list:longest'
+opt.wildmode = 'longest:full,full'
 
 -- Cursor
 opt.cursorline = true
@@ -46,6 +75,7 @@ opt.cursorline = true
 -- Splitting
 opt.splitright = true
 opt.splitbelow = true
+opt.splitkeep = 'screen'
 
 -- Ruler
 opt.ruler = true
@@ -53,5 +83,3 @@ opt.ruler = true
 -- Clipboard
 opt.clipboard = 'unnamedplus'
 
--- Providers
-g.python3_host_prog = '/home/serein/miniforge3/envs/nvim/bin/python'
