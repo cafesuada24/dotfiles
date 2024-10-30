@@ -1,9 +1,9 @@
 local function augroup(name)
-  return vim.api.nvim_create_augroup('commands_' .. name, { clear = true })
+    return vim.api.nvim_create_augroup('commands_' .. name, { clear = true })
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
-    group = augroup(''),
+    group = augroup('lsp_attach'),
     callback = function(args)
         local bufnr = args.buf
         local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -13,15 +13,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
         if client.server_capabilities.definitionProvider then
             vim.bo[bufnr].tagfunc = 'v:lua.vim.lsp.tagfunc'
         end
-        -- local opts = { buffer = args.buf }
-        -- require('config.keymaps').lspconfig(opts)
+        local opts = { buffer = args.buf }
+        require('config.keymaps').lspconfig(opts)
     end,
 })
 
 -- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = augroup('highlight_yank'),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+vim.api.nvim_create_autocmd('TextYankPost', {
+    group = augroup('highlight_yank'),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })

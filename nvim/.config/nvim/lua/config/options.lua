@@ -34,7 +34,7 @@ opt.shiftround = true
 opt.smartcase = true
 
 -- Syntax
-opt.syntax = 'off' 
+opt.syntax = 'off'
 opt.showmatch = true
 
 -- Tabcompletion
@@ -55,4 +55,3 @@ opt.clipboard = 'unnamedplus'
 
 -- Providers
 g.python3_host_prog = '/home/serein/miniforge3/envs/nvim/bin/python'
-

@@ -41,20 +41,13 @@ return {
                 enabled = true,
             },
             capabilities = capabilities,
-            -- capabilities = {
-            --     workspace = {
-            --         fileOperations = {
-            --             didRename = true,
-            --             willRename = true,
-            --         },
-            --     }
-            -- },
             format = {
                 formatting_options = nil,
                 timeout_ms = nil,
             },
             servers = {
                 lua_ls = {
+                    filetypes = { 'lua' },
                     settings = {
                         Lua = {
                             workspace = {
@@ -68,6 +61,14 @@ return {
                             },
                             hint = {
                                 enable = true,
+                            },
+                            format = {
+                                enable = true,
+                                defaultConfig = {
+                                    indent_style = 'space',
+                                    indent_size = '2',
+                                    quote_style = 'single',
+                                }
                             },
                         },
                     },

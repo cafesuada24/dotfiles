@@ -44,11 +44,6 @@ M.init = function()
     map('n', '<leader><tab>]', '<cmd>tabnext<cr>', { desc = 'Next Tab' })
     map('n', '<leader><tab>d', '<cmd>tabclose<cr>', { desc = 'Close Tab' })
     map('n', '<leader><tab>o', '<cmd>tabonly<cr>', { desc = 'Close Other Tabs' })
-
-    -- formatting
-    map({ 'n', 'v' }, '<leader>cf', function()
-        vim.lsp.buf.format({ async = true })
-    end, { desc = 'Format' })
 end
 
 M.fzf_lua = {
@@ -66,34 +61,37 @@ M.fzf_lua = {
     },
 
     -- git
-    { '<leader>gc', '<cmd>FzfLua git_commits<CR>',          desc = 'Commits' },
-    { '<leader>gs', '<cmd>FzfLua git_status<CR>',           desc = 'Status' },
+    { '<leader>gc', '<cmd>FzfLua git_commits<CR>',                                                             desc = 'Commits' },
+    { '<leader>gs', '<cmd>FzfLua git_status<CR>',                                                              desc = 'Status' },
 
     -- search
-    { '<leader>sd', '<cmd>FzfLua diagnostics_document<cr>', desc = 'Document Diagnostics' },
-    { '<leader>sq', '<cmd>FzfLua quickfix<cr>',             desc = 'Quickfix List' },
+    { '<leader>sd', '<cmd>FzfLua diagnostics_document<cr>',                                                    desc = 'Document Diagnostics' },
+    { '<leader>sq', '<cmd>FzfLua quickfix<cr>',                                                                desc = 'Quickfix List' },
+
+    -- lsp integration
+    { 'gd',         '<cmd>FzfLua lsp_definitions     jump_to_single_result=true ignore_current_line=true<cr>', desc = 'Goto Definition' },
+    { 'gr',         '<cmd>FzfLua lsp_references      jump_to_single_result=true ignore_current_line=true<cr>', desc = 'References',            nowait = true },
+    { 'gI',         '<cmd>FzfLua lsp_implementations jump_to_single_result=true ignore_current_line=true<cr>', desc = 'Goto Implementation' },
+    { 'gy',         '<cmd>FzfLua lsp_typedefs        jump_to_single_result=true ignore_current_line=true<cr>', desc = 'Goto T[y]pe Definition' },
 }
 
--- M.lspconfig = function(opts)
---     local map = vim.keymap.set
---     -- Enable completion triggered by <c-x><c-o>
---     map('n', 'gD', vim.lsp.buf.declaration, opts)
---     map('n', 'gd', vim.lsp.buf.definition, opts)
---     map('n', 'K', vim.lsp.buf.hover, opts)
---     map('n', 'gi', vim.lsp.buf.implementation, opts)
---     map('n', '<C-k>', vim.lsp.buf.signature_help, opts)
---     map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
---     map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
---     map('n', '<leader>wl', function()
---         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
---     end, opts)
---     map('n', '<leader>D', vim.lsp.buf.type_definition, opts)
---     map('n', '<leader>rn', vim.lsp.buf.rename, opts)
---     map('n', 'gr', vim.lsp.buf.references, opts)
---     map('n', '<leader>f', function()
---         vim.lsp.buf.format { async = true }
---     end, opts)
--- end
+M.lspconfig = function(opts)
+    local map = vim.keymap.set
+    -- Enable completion triggered by <c-x><c-o>
+    map('n', 'gD', vim.lsp.buf.declaration, opts)
+    -- map('n', 'gd', vim.lsp.buf.definition, opts)
+    -- map('n', 'gI', vim.lsp.buf.implementation, opts)
+    -- map('n', 'gy', vim.lsp.buf.type_definition, opts)
+    -- map('n', 'gr', vim.lsp.buf.references, opts)
+    map('n', 'K', vim.lsp.buf.hover, opts)
+    map('n', 'gK', vim.lsp.buf.signature_help, opts)
+    map('i', '<C-k>', vim.lsp.buf.signature_help, opts)
+    map('n', '<leader>cr', vim.lsp.buf.rename, opts)
+    -- formatting
+    map({ 'n', 'v' }, '<leader>cf', function()
+        vim.lsp.buf.format({ async = true })
+    end, { desc = 'Format' })
+end
 
 M.trouble = {
     {
@@ -163,7 +161,7 @@ M.neo_tree = {
         desc = 'Toggle neotree (ROOT Dir)',
         mode = 'n',
     },
-    { '<leader>e', '<leader>fe', desc = 'Explorer NeoTree (Root Dir)', remap = true },
+    { '<tab>', '<leader>fe', desc = 'Explorer NeoTree (Root Dir)', remap = true },
     -- { '<leader>E', '<leader>fE', desc = 'Explorer NeoTree (cwd)', remap = true },
     {
         '<leader>ge',
