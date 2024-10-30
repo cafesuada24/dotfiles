@@ -25,7 +25,7 @@ return {
         local g = vim.g
         g.fzf_vim = {}
 
-        g.fzf_vim.preview_window = {'up:30%', 'ctrl-/'} 
+        g.fzf_vim.preview_window = {'up:30%', 'ctrl-/'}
     end,
 
     lazy = false

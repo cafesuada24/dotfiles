@@ -30,6 +30,10 @@ return {
         }
     },
 
+    deactivate = function()
+        vim.cmd([[Neotree close]])
+    end,
+
     keys = require('config.keymaps').neo_tree,
 
     lazy = false,
