@@ -13,10 +13,10 @@ M.init = function()
   map({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and Clear hlsearch' })
 
   -- Window Navigation
-  map('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window', remap = true })
-  map('n', '<C-j>', '<C-w>j', { desc = 'Go to Lower Window', remap = true })
-  map('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window', remap = true })
-  map('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window', remap = true })
+  -- map('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window', remap = true })
+  -- map('n', '<C-j>', '<C-w>j', { desc = 'Go to Lower Window', remap = true })
+  -- map('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window', remap = true })
+  -- map('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window', remap = true })
 
   -- Resize window using <ctrl> arrow keys
   map('n', '<C-Up>', '<cmd>resize +2<cr>', { desc = 'Increase Window Height' })
@@ -45,6 +45,14 @@ M.init = function()
   map('n', '<leader><tab>d', '<cmd>tabclose<cr>', { desc = 'Close Tab' })
   map('n', '<leader><tab>o', '<cmd>tabonly<cr>', { desc = 'Close Other Tabs' })
 end
+
+M.tmux_navigator = {
+  { '<c-h>',  '<cmd><C-U>TmuxNavigateLeft<cr>' },
+  { '<c-j>',  '<cmd><C-U>TmuxNavigateDown<cr>' },
+  { '<c-k>',  '<cmd><C-U>TmuxNavigateUp<cr>' },
+  { '<c-l>',  '<cmd><C-U>TmuxNavigateRight<cr>' },
+  { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
+}
 
 M.fzf_lua = {
   {
