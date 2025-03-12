@@ -12,7 +12,7 @@ return {
     
     lint.linters_by_ft = {
       cpp = { 'cpplint' },
-      python = { 'pylint' },
+      -- python = { 'pylint' },
       
     }
   end
