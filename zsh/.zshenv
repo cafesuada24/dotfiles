@@ -30,6 +30,8 @@ export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
 # JAVA
 export JAVA_HOME="/usr/local/java/jdk-23-oracle-x64"
 
+# # Culbas
+# export CUBLAS_WORKSPACE_CONFIG=:16:8
 # FZF
 # export FZF_DEFAULT_COMMAND='rg --files'
 
