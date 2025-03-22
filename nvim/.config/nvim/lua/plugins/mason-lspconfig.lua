@@ -8,7 +8,8 @@ return {
     opts = {
         ensure_installed = {
             'clangd',
-            'pyright'
+            'pyright',
+            'ruff',
         },
 
         automatic_installation = false,
