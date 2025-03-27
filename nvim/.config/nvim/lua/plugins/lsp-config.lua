@@ -87,6 +87,13 @@ return {
             },
           }
         },
+        tsserver = {
+          on_attach = function(client, _)
+            client.handlers["textDocument/publishDiagnostics"] = function() end
+          end,
+          settings = {
+          },
+        }
       },
       setup = {},
     }
