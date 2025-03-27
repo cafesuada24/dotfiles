@@ -3,11 +3,19 @@ general {
         interval = 5
 }
 
+order += "volume capture"
 order += "volume master"
 order += "disk /"
 order += "battery 0"
 order += "load"
 order += "tztime local"
+
+volume capture {
+    format = "Mic: %volume"
+    device = "default"
+    mixer = "Capture"
+    mixer_idx = 0
+}
 
 volume master {
     format = "Volume: %volume"
