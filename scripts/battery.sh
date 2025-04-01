@@ -10,12 +10,12 @@ fi
 PERCENT=$(cat "$BATTERY_PATH/capacity")
 STATUS=$(cat "$BATTERY_PATH/status")
 
-ICON="Unk"  # Default icon (Unknown)
+ICON="BAT"  # Default icon (Unknown)
 
 case "$STATUS" in
-    "Charging") ICON="󰂄" ;;     # Charging icon
-    "Discharging") ICON="󰁺" ;;  # Discharging icon
-    "Full") ICON="󰁹" ;;        # Full battery icon
+    "Charging") ICON="CHR" ;;     # Charging icon
+    "Not charging") ICON="BAT" ;;  # Discharging icon
+    "Full") ICON="FULL" ;;        # Full battery icon
 esac
 
 echo "$ICON  $PERCENT%"
