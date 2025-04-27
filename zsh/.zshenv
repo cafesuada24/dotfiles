@@ -28,6 +28,7 @@ export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
 
 # Micromamba
+export MAMBA_EXE='/opt/micromamba/bin/micromamba';
 export MAMBA_ROOT_PREFIX="$HOME/micromamba"
 
 # JAVA
