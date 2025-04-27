@@ -227,7 +227,7 @@ for_window [class="kitty" instance ="scratchTerm"] move position center
 for_window [class="kitty" instance ="scratchTerm"] move scratchpad
 for_window [class="kitty" instance ="scratchTerm"] resize set 1200 700
 for_window [class="kitty" instance="scratchTerm"] border none
-exec --no-startup-id kitty --name scratchTerm --override font_size=18
+exec --no-startup-id kitty --name scratchTerm --override font_size=12
 bindsym $mod+y [class="kitty" instance ="scratchTerm"] scratchpad show; move position center
 
 ####################################################################################################
@@ -250,3 +250,11 @@ bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle && $refr
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
+
+#                                           Scratch Pad                                            #
+# Move to scratchpad
+bindsym $mod+Shift+Return move scratchpad
+
+#Show scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+minus move workspace current
