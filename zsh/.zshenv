@@ -27,6 +27,9 @@ export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
 
+# Micromamba
+export MAMBA_ROOT_PREFIX="$HOME/micromamba"
+
 # JAVA
 export JAVA_HOME="/usr/local/java/jdk-23-oracle-x64"
 
