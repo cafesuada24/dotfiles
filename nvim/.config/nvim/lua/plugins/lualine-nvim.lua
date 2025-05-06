@@ -11,7 +11,7 @@ return {
       globalstatus = vim.o.laststatus == 3,
       disabled_filetypes = { statusline = { 'dashboard', 'alpha', 'ministarter' } },
     },
-    extensions = { 'neo-tree', 'lazy', 'fzf' },
+    extensions = { 'neo-tree', 'lazy', 'fzf', 'trouble' },
   },
 
   -- opts = {},
