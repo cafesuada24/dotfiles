@@ -35,12 +35,12 @@ fi
 # <<< FZF <<<
 
 # >>> JAVA >>>
-[ -d "/usr/local/java/jdk-23-oracle-x64" ] && export PATH="$JAVA_HOME/bin:$PATH"
-[ -d /opt/apache-maven/bin ] && export PATH=$PATH:/opt/apache-maven/bin
+[ -d "$JAVA_HOME/bin" ] && export PATH="$JAVA_HOME/bin:$PATH"
+[ -d "$MAVEN_DIR/bin" ] && export PATH="$PATH:$MAVEN_DIR/bin"
 # <<< JAVA <<<
 
 # >>> NVIM >>>
-[ -d /opt/nvim-linux64/bin ] && export PATH="$PATH:/opt/nvim-linux64/bin"
+[ -d "$NVIMDIR/bin" ] && export PATH="$PATH:$NVIMDIR/bin"
 if command -v nvim &>/dev/null; then
     export EDITOR="nvim"
     export VISUAL="nvim"
@@ -53,6 +53,10 @@ if command -v rg &>/dev/null; then
     export FZF_DEFAULT_COMMAND='rg --files'
 fi
 # <<< Ripgrep <<<
+
+# >>> Android Studio >>>
+[ -d "$ANDROID_HOME" ] && export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
+# <<< Android Studio <<<
 
 # SOURCING
 source "$ZDOTDIR/options.zsh"
