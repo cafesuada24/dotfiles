@@ -81,15 +81,28 @@ return {
             },
             python = {
               analysis = {
+                typeCheckingMode = 'strict',
                 -- Ignore all files for analysis to exclusively use Ruff for linting
-                ignore = { '*' },
+                -- ignore = { '*' },
+                diagnosticSeverityOverrides = {
+                  reportMissingImports = 'none',
+                  reportUnusedImport = 'none',
+                  reportUnusedVariable = 'none',
+                  reportGeneralTypeIssues = 'error',
+                  reportOptionalMemberAccess = 'none',
+                  reportPrivateImportUsage = 'none',
+                  reportUnboundVariable = 'none',
+                  reportUndefinedVariable = 'none',
+                  reportMissingTypeStubs = 'none',
+                  reportIncompatibleMethodOverride = 'none',
+                }
               },
             },
           }
         },
         tsserver = {
           on_attach = function(client, _)
-            client.handlers["textDocument/publishDiagnostics"] = function() end
+            client.handlers['textDocument/publishDiagnostics'] = function() end
           end,
           settings = {
           },
