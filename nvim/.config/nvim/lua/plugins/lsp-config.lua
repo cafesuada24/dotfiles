@@ -1,6 +1,5 @@
 return {
   'neovim/nvim-lspconfig',
-
   event = { 'BufReadPre', 'BufNewFile' },
 
   lazy = false,
@@ -123,11 +122,23 @@ return {
             'clangd',
             '--background-index',
             '--clang-tidy',
-            '--header-insertion=iwyu',
+            -- '--header-insertion=iwyu',
             '--completion-style=detailed',
             '--function-arg-placeholders',
+            '--log=verbose',
             -- '--fallback-style=llvm',
           },
+          -- settings = {
+          --   clangd = {
+          --     arguments = {
+          --       '--background-index',
+          --       '--clang-tidy',
+          --       '--header-insertion=iwyu',
+          --       '--completion-style=detailed',
+          --       '--function-arg-placeholders',
+          --     },
+          --   },
+          -- },
           init_options = {
             usePlaceholders = true,
             completeUnimported = true,
