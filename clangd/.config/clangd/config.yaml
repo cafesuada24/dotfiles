@@ -8,7 +8,7 @@ CompileFlags:
     - -I/usr/include/x86_64-linux-gnu/c++/13
     - -I/usr/include/c++/13
   Compiler: clang++
-  CompilationDatabase: build/
+  # CompilationDatabase: build/
 Diagnostics:
   ClangTidy:
     Add: modernize*
