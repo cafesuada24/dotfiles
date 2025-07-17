@@ -11,4 +11,4 @@ CompileFlags:
   # CompilationDatabase: build/
 Diagnostics:
   ClangTidy:
-    Add: modernize*
+    Add: ['google-*']
