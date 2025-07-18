@@ -143,7 +143,7 @@ return {
             usePlaceholders = true,
             completeUnimported = true,
             clangdFileStatus = true,
-            fallbackFlags = { '-std=c++17', '-style=llvm' },
+            fallbackFlags = { '-std=c++17', },
           },
         },
         tsserver = {
