@@ -58,6 +58,20 @@ fi
 [ -d "$ANDROID_HOME" ] && export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
 # <<< Android Studio <<<
 
+# >>> Lazygit >>>
+lg()
+{
+    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+
+    lazygit "$@"
+
+    if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+    fi
+}
+# <<< Lazygit <<<
+
 # SOURCING
 source "$ZDOTDIR/options.zsh"
 source "$ZDOTDIR/alias.zsh"
