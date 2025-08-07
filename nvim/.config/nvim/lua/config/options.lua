@@ -1,3 +1,5 @@
+-- REQUIREMENT: neovim v11.x.x
+--
 local g = vim.g
 
 g.markdown_recommended_style = 0
@@ -82,4 +84,7 @@ opt.ruler = true
 
 -- Clipboard
 opt.clipboard = 'unnamedplus'
+
+-- UI
+opt.winborder = 'rounded'
 
