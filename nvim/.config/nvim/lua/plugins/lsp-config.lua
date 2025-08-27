@@ -152,7 +152,10 @@ return {
           end,
           settings = {
           },
-        }
+        },
+        lemminx = {
+          filetypes = { 'xml', 'xslt', 'xsl', 'sdf', 'xacro' }
+        },
       },
       setup = {
       },
