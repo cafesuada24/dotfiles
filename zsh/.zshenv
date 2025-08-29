@@ -42,6 +42,8 @@ export MAVEN_DIR="/opt/apache-maven"
 export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 
+
+
 # # Culbas
 # export CUBLAS_WORKSPACE_CONFIG=:16:8
 # FZF
