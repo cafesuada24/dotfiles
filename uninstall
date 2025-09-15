@@ -1,10 +1,10 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 STOW_FOLDERS='zsh,mamba,nvim,starship,i3,tmux,kitty,bin'
 
-DOTFILES_HOME=$HOME/.dotfiles
+DOTFILES_HOME="$HOME/.dotfiles"
 
-pushd $DOTFILES_HOME
+pushd "$DOTFILES_HOME"
 for folder in $(echo $STOW_FOLDERS | sed 's/,/ /g')
 do
     echo "Removing $folder"

@@ -9,7 +9,7 @@ color=#b16286  # Rose Pine Love
 [battery]
 # command=acpi -i | grep 'Battery 0' | awk '{print $4" "$5}' | sed 's/,//'
 # command=cat /sys/class/power_supply/BAT0/capacity
-command=~/.dotfiles/scripts/battery.sh
+command=~/.dotfiles/scripts/battery
 interval=30
 color=#458588  # Rose Pine Pine
 

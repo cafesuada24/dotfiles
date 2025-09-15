@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 workspaces="${HOME}/projects,${HOME}/courseworks,$HOME/source_code"
 
