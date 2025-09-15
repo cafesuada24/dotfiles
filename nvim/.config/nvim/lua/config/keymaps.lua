@@ -12,12 +12,6 @@ M.init = function()
   -- Clear search with <esc>
   map({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and Clear hlsearch' })
 
-  -- Window Navigation
-  -- map('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window', remap = true })
-  -- map('n', '<C-j>', '<C-w>j', { desc = 'Go to Lower Window', remap = true })
-  -- map('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window', remap = true })
-  -- map('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window', remap = true })
-
   -- Resize window using <ctrl> arrow keys
   map('n', '<C-Up>', '<cmd>resize +2<cr>', { desc = 'Increase Window Height' })
   map('n', '<C-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease Window Height' })
@@ -83,14 +77,22 @@ M.fzf_lua = {
   { 'gy',         '<cmd>FzfLua lsp_typedefs        jump_to_single_result=true ignore_current_line=true<cr>', desc = 'Goto T[y]pe Definition' },
 }
 
+M.nvim_cmp = function(cmp)
+  return {
+    ['<C-j>'] = cmp.mapping.select_next_item(),
+    ['<C-k>'] = cmp.mapping.select_prev_item(),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = false })
+  }
+end
+
 M.lspconfig = function(opts)
   local map = vim.keymap.set
   -- Enable completion triggered by <c-x><c-o>
   map('n', 'gD', vim.lsp.buf.declaration, opts)
-  -- map('n', 'gd', vim.lsp.buf.definition, opts)
-  -- map('n', 'gI', vim.lsp.buf.implementation, opts)
-  -- map('n', 'gy', vim.lsp.buf.type_definition, opts)
-  -- map('n', 'gr', vim.lsp.buf.references, opts)
   map('n', 'K', vim.lsp.buf.hover, opts)
   map('n', 'gK', vim.lsp.buf.signature_help, opts)
   map('i', '<C-k>', vim.lsp.buf.signature_help, opts)

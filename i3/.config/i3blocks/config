@@ -27,7 +27,8 @@ color=#458588  # Rose Pine Pine
 
 # Volume
 [volume]
-command=pactl get-sink-mute @DEFAULT_SINK@ | grep -q yes && echo "󰖁 Muted" || echo "󰕾 $(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}')"
+# command=pactl get-sink-mute @DEFAULT_SINK@ | grep -q yes && echo "󰖁 Muted" || echo "󰕾 $(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}')"
+command=amixer get Master | grep -q "off" && echo "󰖁 Muted" || echo "󰕾 $(amixer get Master | grep 'Left:' | awk -F'[][]' '{print $2}')"
 interval=1
 signal=10
 color=#98971a  # Rose Pine Sage

@@ -72,6 +72,8 @@ lg()
 }
 # <<< Lazygit <<<
 
+# >>> 
+
 # SOURCING
 source "$ZDOTDIR/options.zsh"
 source "$ZDOTDIR/alias.zsh"

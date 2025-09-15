@@ -1,16 +1,21 @@
 #!/usr/bin/env bash
 
-workspaces="${HOME}/projects,${HOME}/courseworks,$HOME/source_code"
+WORKSPACES=(
+  "$HOME/projects"
+  "$HOME/courseworks"
+  "$HOME/source_code"
+)
 
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(echo "$workspaces" | tr ',' '\n' | xargs -I {} find {} -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find "${WORKSPACES[@]}"  -mindepth 1 -maxdepth 1 -type d \
+      | sed "s|^$HOME/||" \
+      | fzf --color="bw")
+    [[ $selected ]] && selected="$HOME/$selected"
 fi
 
-if [[ -z $selected ]]; then
-    exit 0
-fi
+[[ ! $selected ]] && exit 0
 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)

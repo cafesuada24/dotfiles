@@ -1,17 +1,18 @@
 return {
-    'williamboman/mason-lspconfig.nvim',
+  'williamboman/mason-lspconfig.nvim',
 
-    dependencies = {
-        'williamboman/mason.nvim',
+  dependencies = {
+    'williamboman/mason.nvim',
+  },
+
+  opts = {
+    ensure_installed = {
+      'clangd',
+      'pyright',
+      'ruff',
+      'bashls',
     },
 
-    opts = {
-        ensure_installed = {
-            'clangd',
-            'pyright',
-            'ruff',
-        },
-
-        automatic_installation = false,
-    },
+    automatic_installation = false,
+  },
 }
