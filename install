@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if ! [ -x  "$(command -v stow)" ]; then
+    echo 'Stow not found! Installing...'
+    sudo apt-get update && sudo apt-get install stow -y
+fi
+
 STOW_FOLDERS='zsh,mamba,nvim,starship,i3,tmux,kitty,bin,clangd'
 
 DOTFILES_HOME="$HOME/.dotfiles"
