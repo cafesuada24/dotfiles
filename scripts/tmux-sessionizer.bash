@@ -32,3 +32,5 @@ if ! tmux has-session -t=$selected_name 2> /dev/null; then
 fi
 
 tmux switch-client -t $selected_name
+
+tmux send-keys -t "$selected_name:1" "[[ -f ./setup-workspace.bash ]] && source ./setup-workspace.bash" Enter
