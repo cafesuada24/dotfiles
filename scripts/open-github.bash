@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd $(tmux run "echo #{pane_start_path}")
+cd $(tmux display-message -p '#{pane_start_path}')
 url=$(git remote get-url origin)
 
 if [[ $url == *github.com* ]]; then
