@@ -50,7 +50,7 @@ fi
 
 # Micromamba
 export MAMBA_EXE='/opt/micromamba/bin/micromamba'
-if [[ -d "$MAMBA_EXE" ]]; then
+if [[ -x "$MAMBA_EXE" ]]; then
     export MAMBA_ROOT_PREFIX="$HOME/micromamba"
 else
     unset MAMBA_EXE
@@ -75,6 +75,7 @@ fi
 export ANDROID_HOME="$HOME/Android/Sdk"
 if [[ -d "$ANDROID_HOME" ]]; then
     export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
+    export ANDROID_USER_HOME="$HOME/.android"
 else
     unset ANDROID_HOME
 fi
@@ -85,20 +86,8 @@ if ! [[ -d "$FZF_DIR" ]]; then
     unset FZF_DIR
 fi
 
-# # Culbas
-# export CUBLAS_WORKSPACE_CONFIG=:16:8
-# FZF
-# export FZF_DEFAULT_COMMAND='rg --files'
-
 # Man pages
 # export MANPAGER='nvim +Man!'
 
 # 
 export KEYTIMEOUT=1
-
-
-################
-#              #
-# Call modules #
-#              #
-################
