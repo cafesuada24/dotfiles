@@ -88,3 +88,9 @@ opt.clipboard = 'unnamedplus'
 -- UI
 opt.winborder = 'rounded'
 
+-- Licenses
+g.tmplvim_author = 'Cafesuada'
+g.tmplvim_default_environment = 'personal'
+g.tmplvim_vars = {
+  email = 'connghiencafe@protonmail.com'
+}

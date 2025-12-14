@@ -16,3 +16,5 @@ do
 	stow $folder -t $HOME -v
 done
 popd
+
+ln -s "$DOTFILES_HOME/templates" "$DOTFILES_HOME/nvim/.config/nvim/templates"

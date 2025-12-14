@@ -11,3 +11,5 @@ do
     stow -D $folder -v
 done
 popd
+
+unlink "$DOTFILES_HOME/nvim/.config/nvim/templates"

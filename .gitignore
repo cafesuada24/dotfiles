@@ -8,3 +8,5 @@ tmux/.config/tmux/tmux/plugins/*
 lazy-lock.json
 
 bin/.local/bin/lazydocker
+
+nvim/.config/nvim/templates
