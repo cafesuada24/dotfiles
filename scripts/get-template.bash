@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TEMPLATE_DIR=$DOTFILES/code_templates
+TEMPLATE_DIR=$DOTFILES/templates
 
 selected_file=$(ls $TEMPLATE_DIR | fzf)
 
