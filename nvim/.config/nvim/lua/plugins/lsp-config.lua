@@ -165,12 +165,12 @@ return {
   config = function(_, opts)
     vim.diagnostic.config(opts.diagnostics)
     local lspconfig = require('lspconfig')
-    require('mason-lspconfig').setup_handlers({
-      function(server_name)
-        local server_opts = opts.servers[server_name] or {}
-        server_opts.capabilities = opts.capabilities
-        lspconfig[server_name].setup(server_opts)
-      end
-    })
+    -- require('mason-lspconfig').setup_handlers({
+    --   function(server_name)
+    --     local server_opts = opts.servers[server_name] or {}
+    --     server_opts.capabilities = opts.capabilities
+    --     vim.lsp[server_name].enable(server_opts)
+    --   end
+    -- })
   end
 }

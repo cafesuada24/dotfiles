@@ -1,3 +1,7 @@
+if not table.unpack then
+  table.unpack = unpack
+end
+
 local function augroup(name)
   return vim.api.nvim_create_augroup('commands_' .. name, { clear = true })
 end
