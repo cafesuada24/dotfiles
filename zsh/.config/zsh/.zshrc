@@ -16,7 +16,11 @@ fi
 # <<< nvm initiazlize <<<
 
 # >>> fzf intitalize >>>
-[ -d "$FZF_DIR" ] && export PATH=$PATH:/opt/fzf/bin
+if [ -d "$FZF_DIR" ]; then
+    export PATH=$PATH:$FZF_DIR/bin
+    source $FZF_DIR/shell/key-bindings.zsh
+    source $FZF_DIR/shell/completion.zsh
+fi
 # <<< fzf initialize <<<
 
 # >>> starship init >>>
