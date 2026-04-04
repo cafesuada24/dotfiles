@@ -5,7 +5,7 @@ if ! [ -x  "$(command -v stow)" ]; then
     sudo apt-get update && sudo apt-get install stow -y
 fi
 
-STOW_FOLDERS='zsh,mamba,nvim,starship,i3,tmux,kitty,clangd'
+STOW_FOLDERS='zsh,mamba,nvim,starship,i3,tmux,kitty,clangd,claude'
 
 DOTFILES_HOME="$HOME/.dotfiles"
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-STOW_FOLDERS='zsh,mamba,nvim,starship,i3,tmux,kitty'
+STOW_FOLDERS='zsh,mamba,nvim,starship,i3,tmux,kitty,claude'
 
 DOTFILES_HOME="$HOME/.dotfiles"
 
