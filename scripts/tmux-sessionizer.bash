@@ -3,7 +3,7 @@
 WORKSPACES=(
   "$HOME/Projects"
   "$HOME/Playground"
-  "$HOME/source_code"
+  "$HOME/SourceCodes"
   "$HOME/ros_workspaces"
 )
 
