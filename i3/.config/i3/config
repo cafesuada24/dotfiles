@@ -258,3 +258,14 @@ bindsym $mod+Shift+Return move scratchpad
 #Show scratchpad
 bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+minus move workspace current
+
+#Screenshot
+
+bindsym F6 exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+bindsym $mod+F6 exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+bindsym Shift+F6 exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+
+## Clipboard Screenshots
+bindsym Ctrl+F6 exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+F6 exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+F6 exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
