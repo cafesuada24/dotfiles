@@ -18,6 +18,18 @@ M.init = function()
   map('n', '<C-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
   map('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
 
+  -- Move lines up/down (Alt+j/k like VSCode)
+  map('n', '<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
+  map('n', '<A-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = 'Move Up' })
+  map('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' })
+  map('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
+  map('v', '<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = 'Move Down' })
+  map('v', '<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
+
+  -- Select all
+  map('n', '==', 'gg<S-v>G')
+  map('n', '<A-a>', 'ggVG', { noremap = true, silent = true, desc = 'Select all' })
+
   -- Buffer
   map('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
   map('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
@@ -25,6 +37,14 @@ M.init = function()
   -- Windows
   map('n', '<leader>-', '<C-W>s', { desc = 'Split Window Below', remap = true })
   map('n', '<leader>|', '<C-W>v', { desc = 'Split Window Right', remap = true })
+
+  -- Auto-close pairs (simple, no plugin needed)
+  map('i', '`', '``<left>')
+  map('i', '"', '""<left>')
+  map('i', '(', '()<left>')
+  map('i', '[', '[]<left>')
+  map('i', '{', '{}<left>')
+  map('i', '<', '<><left>')
 
   -- better indenting
   map('v', '<', '<gv')

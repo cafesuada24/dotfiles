@@ -61,8 +61,9 @@ opt.pumheight = 10
 -- Grep
 opt.grepprg = 'rg --vimgrep'
 
--- Case
+-- Search
 opt.smartcase = true
+opt.ignorecase = true
 
 -- Syntax
 opt.syntax = 'off'
@@ -83,7 +84,7 @@ opt.splitkeep = 'screen'
 opt.ruler = true
 
 -- Clipboard
-opt.clipboard = 'unnamedplus'
+opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 
 -- UI
 opt.winborder = 'rounded'
@@ -94,3 +95,38 @@ g.tmplvim_default_environment = 'personal'
 g.tmplvim_vars = {
   email = 'connghiencafe@protonmail.com'
 }
+
+
+-- Performance
+opt.synmaxcol = 300
+opt.redrawtime = 10000
+opt.maxmempattern = 20000
+
+opt.backup = false -- Don't create backup files
+opt.writebackup = false -- Don't create backup before writing
+opt.swapfile = false -- Don't create swap files
+
+-- Undo
+opt.undofile = true -- Persistent undo
+opt.undolevels = 10000
+opt.undodir = vim.fn.expand("~/.cache/nvim/undodir") -- Undo directory
+local undodir = vim.fn.expand("~/.cache/nvim/undodir")
+if vim.fn.isdirectory(undodir) == 0 then
+  vim.fn.mkdir(undodir, "p")
+end
+
+g.markdown_recommended_style = 0
+
+vim.filetype.add({
+  extension = {
+    env = "dotenv",
+  },
+  filename = {
+    [".env"] = "dotenv",
+    ["env"] = "dotenv",
+  },
+  pattern = {
+    ["[jt]sconfig.*.json"] = "jsonc",
+    ["%.env%.[%w_.-]+"] = "dotenv",
+  },
+})

@@ -1,3 +1,4 @@
+
 vim.lsp.enable({
   'pyright',
   'lua_ls',
@@ -6,6 +7,10 @@ vim.lsp.enable({
   'lemminx',
   'terraformls',
   'tflint',
+})
+
+vim.lsp.config("*", {
+  debounce_text_changes = 300, -- milliseconds
 })
 
 vim.diagnostic.config({
