@@ -64,6 +64,14 @@ lg()
 }
 # <<< Lazygit <<<
 
+# <<< Google Cloud <<<
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/serein/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/serein/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/serein/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/serein/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
 # SOURCING
 source "$ZDOTDIR/options.zsh"
 source "$ZDOTDIR/alias.zsh"
