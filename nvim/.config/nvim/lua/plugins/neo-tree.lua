@@ -1,7 +1,11 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
+
   branch = 'v3.x',
+  lazy = false,
+
   cmd = 'Neotree',
+
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
@@ -56,6 +60,4 @@ return {
   end,
 
   keys = require('config.keymaps').neo_tree,
-
-  lazy = false,
 }

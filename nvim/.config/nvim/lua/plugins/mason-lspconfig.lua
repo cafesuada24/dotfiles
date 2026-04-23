@@ -1,8 +1,9 @@
 return {
-  'williamboman/mason-lspconfig.nvim',
+  'mason-org/mason-lspconfig.nvim',
+   lazy = false,
 
   dependencies = {
-    'williamboman/mason.nvim',
+    { 'mason-org/mason.nvim', opts = {} },
   },
 
   opts = {
@@ -11,6 +12,10 @@ return {
       'pyright',
       'ruff',
       'bashls',
+      'ts_ls',
+      'lua_ls',
+      'terraformls',
+      'tflint',
     },
 
     automatic_installation = false,
