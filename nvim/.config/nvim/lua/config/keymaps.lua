@@ -97,17 +97,17 @@ M.fzf_lua = {
   { 'gy',         '<cmd>FzfLua lsp_typedefs        jump_to_single_result=true ignore_current_line=true<cr>', desc = 'Goto T[y]pe Definition' },
 }
 
-M.nvim_cmp = function(cmp)
-  return {
-    ['<C-j>'] = cmp.mapping.select_next_item(),
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = false })
-  }
-end
+M.blink = {
+  -- ['<Up>'] = { 'select_prev', 'fallback' },
+  -- ['<Down>'] = { 'select_next', 'fallback' },
+  ['<C-j>'] = { 'select_next', 'fallback' },
+  ['<C-k>'] = { 'select_prev', 'fallback' },
+  ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+  ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+  -- ['<C-Space>'] = cmp.mapping.complete(),
+  -- ['<C-e>'] = cmp.mapping.abort(),
+  ['<CR>'] = { 'accept', 'fallback' }
+}
 
 M.lspconfig = function(opts)
   local map = vim.keymap.set
