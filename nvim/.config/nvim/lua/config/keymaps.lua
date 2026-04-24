@@ -40,11 +40,11 @@ M.init = function()
 
   -- Auto-close pairs (simple, no plugin needed)
   map('i', '`', '``<left>')
+  map('i', "'", "''<left>")
   map('i', '"', '""<left>')
   map('i', '(', '()<left>')
   map('i', '[', '[]<left>')
   map('i', '{', '{}<left>')
-  map('i', '<', '<><left>')
 
   -- better indenting
   map('v', '<', '<gv')
