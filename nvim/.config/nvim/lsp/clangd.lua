@@ -92,7 +92,7 @@ return {
         editsNearCursor = true,
       },
     },
-    offsetEncoding = { 'utf-8', 'utf-16' },
+    offsetEncoding = 'utf-16',
   },
   init_options = {
     usePlaceholders = true,
