@@ -1,10 +1,11 @@
 return {
   'mason-org/mason-lspconfig.nvim',
+
   lazy = false,
 
   dependencies = {
     { 'mason-org/mason.nvim', opts = {} },
-    'hrsh7th/nvim-cmp',
+    'neovim/nvim-lspconfig',
   },
 
   opts = {
@@ -20,7 +21,7 @@ return {
     },
 
     automatic_installation = false,
-    automatic_enable = false,
+    automatic_enable = true,
   },
 
   config = function(_, opts)
@@ -29,18 +30,18 @@ return {
     vim.lsp.config('*', {
       debounce_text_changes = 300, -- milliseconds
     })
-
-    vim.lsp.enable({
-      'pyright',
-      'lua_ls',
-      'clangd',
-      'ts_ls',
-      'lemminx',
-      'terraformls',
-      'tflint',
-      'ruff',
-    })
-
+    --
+    --   vim.lsp.enable({
+    --     'pyright',
+    --     'lua_ls',
+    --     'clangd',
+    --     'ts_ls',
+    --     'lemminx',
+    --     'terraformls',
+    --     'tflint',
+    --     'ruff',
+    --   })
+    --
     vim.diagnostic.config({
       -- virtual_lines = true,
       virtual_text = true,
@@ -52,14 +53,13 @@ return {
         source = true,
       },
       signs = {
-      --   text = {
-      --   },
+        --   text = {
+        -- },
         numhl = {
           [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
           [vim.diagnostic.severity.WARN] = 'WarningMsg',
         }
       }
     })
-
   end
 }
