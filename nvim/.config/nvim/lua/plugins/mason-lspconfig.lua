@@ -1,9 +1,10 @@
 return {
   'mason-org/mason-lspconfig.nvim',
-   lazy = false,
+  lazy = false,
 
   dependencies = {
     { 'mason-org/mason.nvim', opts = {} },
+    'hrsh7th/nvim-cmp',
   },
 
   opts = {
@@ -19,5 +20,46 @@ return {
     },
 
     automatic_installation = false,
+    automatic_enable = false,
   },
+
+  config = function(_, opts)
+    require('mason-lspconfig').setup(opts)
+
+    vim.lsp.config('*', {
+      debounce_text_changes = 300, -- milliseconds
+    })
+
+    vim.lsp.enable({
+      'pyright',
+      'lua_ls',
+      'clangd',
+      'ts_ls',
+      'lemminx',
+      'terraformls',
+      'tflint',
+      'ruff',
+    })
+
+    vim.diagnostic.config({
+      -- virtual_lines = true,
+      virtual_text = true,
+      underline = true,
+      update_in_insert = false,
+      severity_sort = true,
+      float = {
+        border = 'rounded',
+        source = true,
+      },
+      signs = {
+      --   text = {
+      --   },
+        numhl = {
+          [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+          [vim.diagnostic.severity.WARN] = 'WarningMsg',
+        }
+      }
+    })
+
+  end
 }
