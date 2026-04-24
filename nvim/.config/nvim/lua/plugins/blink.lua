@@ -38,7 +38,12 @@ return {
 
     -- (Default) Only show the documentation popup when manually triggered
     completion = {
-      documentation = { auto_show = false },
+      documentation = {
+        auto_show = false,
+        auto_show_delay_ms = 250,
+        treesitter_highlighting = true,
+        window = { border = 'rounded' },
+      },
       list = {
         selection = {
           preselect = false,
@@ -56,19 +61,6 @@ return {
 
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
-    },
-
-    accept = { auto_brackets = { enabled = true } },
-
-    documentation = {
-      auto_show = true,
-      auto_show_delay_ms = 250,
-      treesitter_highlighting = true,
-      window = { border = 'rounded' },
-    },
-
-    menu = {
-      border = 'rounded',
     },
 
     signature = {
