@@ -7,6 +7,9 @@ g.markdown_recommended_style = 0
 -- Providers
 g.python3_host_prog = '/home/serein/miniforge3/envs/nvim/bin/python'
 
+-- LSP
+g.completion_mode = 'blink'
+
 
 local opt = vim.opt
 

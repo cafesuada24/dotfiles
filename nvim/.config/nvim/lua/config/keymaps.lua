@@ -71,7 +71,7 @@ M.tmux_navigator = {
 M.fzf_lua = {
   {
     '<C-p>',
-    '<cmd>lua require("fzf-lua").files()<CR>',
+    '<cmd>FzfLua files<CR>',
     silent = true,
     desc = 'FZF files'
   },
@@ -87,14 +87,20 @@ M.fzf_lua = {
   { '<leader>gs', '<cmd>FzfLua git_status<CR>',                                                              desc = 'Status' },
 
   -- search
-  { '<leader>sd', '<cmd>FzfLua diagnostics_document<cr>',                                                    desc = 'Document Diagnostics' },
-  { '<leader>sq', '<cmd>FzfLua quickfix<cr>',                                                                desc = 'Quickfix List' },
+  { '<leader>sd', '<cmd>FzfLua diagnostics_document<CR>',                                                    desc = 'Document Diagnostics' },
+  { '<leader>sq', '<cmd>FzfLua quickfix<CR>',                                                                desc = 'Quickfix List' },
+  { '<leader>sl', '<cmd>FzfLua live_grep<CR>',                                                               desc = 'Live Grep' },
+  { '<leader>bs', '<cmd>FzfLua buffers<CR>',                                                                 desc = 'Live Grep' },
+
 
   -- lsp integration
-  { 'gd',         '<cmd>FzfLua lsp_definitions     jump_to_single_result=true ignore_current_line=true<cr>', desc = 'Goto Definition' },
+  -- { 'gd',         '<cmd>FzfLua lsp_definitions     jump_to_single_result=true ignore_current_line=true<cr>', desc = 'Goto Definition' },
   { 'gr',         '<cmd>FzfLua lsp_references      jump_to_single_result=true ignore_current_line=true<cr>', desc = 'References',            nowait = true },
   { 'gI',         '<cmd>FzfLua lsp_implementations jump_to_single_result=true ignore_current_line=true<cr>', desc = 'Goto Implementation' },
   { 'gy',         '<cmd>FzfLua lsp_typedefs        jump_to_single_result=true ignore_current_line=true<cr>', desc = 'Goto T[y]pe Definition' },
+
+  -- Buffer
+
 }
 
 M.blink = {
@@ -109,19 +115,22 @@ M.blink = {
   ['<CR>'] = { 'accept', 'fallback' }
 }
 
-M.lspconfig = function(opts)
-  local map = vim.keymap.set
-  -- Enable completion triggered by <c-x><c-o>
-  map('n', 'gD', vim.lsp.buf.declaration, opts)
-  map('n', 'K', vim.lsp.buf.hover, opts)
-  map('n', 'gK', vim.lsp.buf.signature_help, opts)
-  map('i', '<C-k>', vim.lsp.buf.signature_help, opts)
-  map('n', '<leader>cr', vim.lsp.buf.rename, opts)
-  -- formatting
-  map({ 'n', 'v' }, '<leader>cf', function()
-    vim.lsp.buf.format({ async = true })
-  end, { desc = 'Format' })
-end
+
+M.lsp_keymaps = {
+  -- { keys = "<leader>ca", func = vim.lsp.buf.code_action, desc = "Code Actions" },
+  { keys = '<leader>cr', func = vim.lsp.buf.rename,     desc = 'Code Rename' },
+  { keys = 'K',          func = vim.lsp.buf.hover,      desc = 'Hover (alt)',     has = 'hoverProvider' },
+  { keys = 'gd',         func = vim.lsp.buf.definition, desc = 'Goto Definition', has = 'definitionProvider' },
+  { keys = 'gD',         func = vim.lsp.buf.definition, desc = 'Goto Declaration' },
+  {
+    keys = '<leader>cf',
+    func = function()
+      vim.lsp.buf.format({ async = true })
+    end,
+    mode = { 'n', 'v' },
+    desc = 'Format'
+  }
+}
 
 M.trouble = {
   {

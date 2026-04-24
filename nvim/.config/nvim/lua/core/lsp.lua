@@ -1,25 +1,14 @@
-
 vim.lsp.enable({
-  'pyright',
-  'lua_ls',
+  'bashls',
   'clangd',
-  'ts_ls',
-  'lemminx',
+  'lua_ls',
+  'pyright',
+  'ruff',
   'terraformls',
   'tflint',
+  'ts_ls'
 })
 
-vim.lsp.config("*", {
-  debounce_text_changes = 300, -- milliseconds
-})
-
-vim.diagnostic.config({
-  virtual_line = true,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = true,
-  float = {
-    border = "rounded",
-    source = true,
-  },
-})
+if vim.g.lsp_on_demands then
+  vim.lsp.enable(vim.g.lsp_on_demands)
+end

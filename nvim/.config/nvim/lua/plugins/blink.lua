@@ -33,7 +33,7 @@ return {
     appearance = {
       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned
-      nerd_font_variant = 'Nerd Font'
+      nerd_font_variant = 'normal'
     },
 
     -- (Default) Only show the documentation popup when manually triggered
@@ -45,7 +45,8 @@ return {
         window = { border = 'rounded' },
       },
       ghost_text = {
-        enalbled = true,
+        enabled = false,
+        -- show_with_menu = false,
       },
       list = {
         selection = {
@@ -59,6 +60,7 @@ return {
         },
       },
       menu = {
+        auto_show = true,
         draw = {
           treesitter = { "lsp" },
         },
@@ -69,7 +71,6 @@ return {
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     cmdline = {
       enabled = true,
-      sources = {},
     },
 
     sources = {
