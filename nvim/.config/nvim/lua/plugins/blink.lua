@@ -44,10 +44,23 @@ return {
         treesitter_highlighting = true,
         window = { border = 'rounded' },
       },
+      ghost_text = {
+        enalbled = true,
+      },
       list = {
         selection = {
           preselect = false,
           auto_insert = true, -- Optional: Automatically insert text when only one option exists
+        },
+      },
+      accept = {
+        auto_brackets = {
+          enabled = true,
+        },
+      },
+      menu = {
+        draw = {
+          treesitter = { "lsp" },
         },
       },
     },
@@ -60,7 +73,7 @@ return {
     },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = { 'lsp', 'path', 'snippets' },
     },
 
     signature = {
