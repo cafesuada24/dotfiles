@@ -11,8 +11,13 @@ line-length = 88
 target-version = "py312"
 
 [tool.ruff.lint.per-file-ignores]
-# "**/{tests,docs,tools}/*" = ["E402"]
-"**/tests/*" = ["S101"]
+# Apply these ignores only to files in the tests directory
+"tests/**/*.py" = [
+    "S101",    # Use of assert is mandatory in tests
+    "ARG001",  # Unused function arguments (fixtures)
+    "FBT001",  # Boolean positional arguments in parametrization
+    "D",       # Ignore missing docstrings in tests
+]
 
 [tool.ruff.format]
 # 5. Use single quotes in `ruff format`.
@@ -68,10 +73,12 @@ ignore = [
     'F841',   # pyright already supports this
     'F401',   
     'D416',   # numpydocstyle does not use colon in section name
+    'COM812'
 ]
 
 fixable = ['ALL']
 unfixable = []
+extend-select = ['PT']
 
 [tool.ruff.lint.pydocstyle]
 # Use Google-style docstrings.
