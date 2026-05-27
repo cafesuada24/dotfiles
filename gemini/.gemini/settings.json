@@ -22,7 +22,7 @@
     "context7": {
       "httpUrl": "https://mcp.context7.com/mcp",
       "headers": {
-        "CONTEXT7_API_KEY": "ctx7sk-f3a17949-005f-4d64-98e0-95c7939b246c"
+        "CONTEXT7_API_KEY": ""
       }
     },
     "sequential-thinking": {
