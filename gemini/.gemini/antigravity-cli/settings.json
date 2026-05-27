@@ -1,0 +1,25 @@
+{
+  "editor": "vim",
+  "enableTelemetry": false,
+  "model": "Gemini 3.1 Pro (Low)",
+  "tools": {
+    "python": {
+      "command": "PYTHONPATH=. uv run python"
+    }
+  },
+  "mcpServers": {
+    "context7": {
+      "httpUrl": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "ctx7sk-f3a17949-005f-4d64-98e0-95c7939b246c"
+      }
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    }
+  }
+}
