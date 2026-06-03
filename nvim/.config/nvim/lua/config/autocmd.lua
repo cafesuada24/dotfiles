@@ -35,9 +35,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
     end
     if client:supports_method('textDocument/documentColor') then
-      vim.lsp.document_color.enable(true, { bufnr = buf }, {
-        style = 'virtual',
-      })
+      if vim.lsp.document_color then
+        vim.lsp.document_color.enable(true, { bufnr = buf }, {
+          style = 'virtual',
+        })
+      end
     end
 
     local keymaps = require('config.keymaps').lsp_keymaps
