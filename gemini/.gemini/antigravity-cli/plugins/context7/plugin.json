@@ -1,0 +1,5 @@
+{
+    "name": "context7-plugin",
+    "version": "1.0.0",
+    "description": "A resolver to fetch latest documentation of any library or frameworks."
+}
