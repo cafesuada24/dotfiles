@@ -1,0 +1,20 @@
+{
+    "gitnexus-agy-hook": {
+        "PreInvocation": null,
+        "PostInvocation": null,
+        "Stop": null,
+        "PreToolUse": null,
+        "PostToolUse": [
+            {
+                "matcher": "",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "./scripts/gitnexus-antigravity-hooks.cjs",
+                        "timeout": 10
+                    }
+                ]
+            }
+        ]
+    }
+}
