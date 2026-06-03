@@ -6,7 +6,8 @@ vim.lsp.enable({
   'ruff',
   'terraformls',
   'tflint',
-  'ts_ls'
+  'ts_ls',
+  'jsonls'
 })
 
 if vim.g.lsp_on_demands then
