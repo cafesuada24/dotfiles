@@ -1,0 +1,10 @@
+{
+  "hasCompletedOnboarding": true,
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://127.0.0.1:20128/v1",
+    "ANTHROPIC_AUTH_TOKEN": "",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "ag/claude-opus-4-6-thinking",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "ag/claude-sonnet-4-6",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "ag/gemini-3-flash-agent"
+  }
+}
