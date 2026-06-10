@@ -59,4 +59,9 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - ALWAYS ask for clarification, no assumption.
 - ALWAYS generate an execution plan to review, NO direct execution.
 - Implementation plans must include: architecture, logic flow, and the trade-off.
+- ALWAYS 
 
+## 6. MCP, Skills and Agents
+
+- For complex coding-related tasks, ALWAYS consider using MCP servers, skills and agents to maximize outcomes.
+- For complex tasks, use `sequential-thinking` MCP server for better thinking quality.
