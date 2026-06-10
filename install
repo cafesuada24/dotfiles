@@ -17,4 +17,4 @@ do
 done
 popd
 
-ln -s "$DOTFILES_HOME/templates" "$DOTFILES_HOME/nvim/.config/nvim/templates"
+ln -s "$DOTFILES_HOME/templates" "$DOTFILES_HOME/nvim/.config/nvim/"
