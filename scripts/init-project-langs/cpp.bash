@@ -1,12 +1,13 @@
+#!/usr/bin/env bash
+
 TEMPLATES_DIR=$DOTFILES/templates
 
 read -p "Directory name (default current directory): " dir 
-read -p "Python version (default 3.12): " python_version
+read -p "Cpp standard (default 20): " cpp_std
 read -p "Use git? ([y]/n) " use_git
 
-
-if [[ -z $python_version ]]; then
-    python_version="3.12"
+if [[ -z $cpp_std ]]; then
+    cpp_std="20"
 fi
 
 if [[ -z $use_git ]]; then
@@ -24,8 +25,6 @@ else
 fi
 
 cd $dir
-
-cp $TEMPLATES_DIR/gitignore.python .gitignore
 
 try_init_git_flow() {
     read -p "Use git flow? ([y]/n) " use_git_flow
@@ -45,14 +44,21 @@ try_init_git_flow() {
 
 }
 
+proj_name="${PWD##*/}"
+
+# Convert to snakecase
+proj_name_normalized=$(echo $proj_name | sed -E 's/(^|_|-)(.)/\U\2/g')
+
+mkdir -p include/${proj_name} src tests
+touch README.md
+cp $TEMPLATES_DIR/gitignore.cpp .gitignore
+CPP_STANDARD=$cpp_std envsubst < $TEMPLATES_DIR/clangd > .clangd
+PROJECT_NAME=$proj_name_normalized CPP_STANDARD=$cpp_std envsubst < $TEMPLATES_DIR/CMakeLists.txt > CMakeLists.txt
+
 case $use_git in
-    [yY] ) try_init_git_flow && uv init --vcs git --author-from git --python $python_version;;
-    [nN] ) uv init --vcs none --author-from auto --python $python_version;;
+    [yY] ) try_init_git_flow;;
+    [nN] ) ;;
     * ) echo "Invalid option";;
 esac
-
-tail -n +8 $TEMPLATES_DIR/pyproject.toml >> pyproject.toml
-
-uv venv
 
 echo "Done."
