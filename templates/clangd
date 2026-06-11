@@ -2,7 +2,7 @@ CompileFlags:
   Add:
     - -xc++
     - -Wall
-    - -std=c++${CPP_STANDARD}
+    - -std=c++{{CPP_STANDARD}}
     # - -I/usr/local/include
     # - -style=Google
     - -I/usr/include/x86_64-linux-gnu/c++/13

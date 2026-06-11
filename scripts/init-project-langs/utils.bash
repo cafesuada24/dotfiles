@@ -136,3 +136,32 @@ init_git() {
         fi
     fi
 }
+
+# ------------------------------------------------------------------------------
+# render_template
+# Purpose: Substitute specific placeholders in a template file using sed.
+# Arguments:
+#   $1 - Path to template file
+#   $2 - Path to output file
+#   $@ - Array of KEY=VALUE pairs to replace (e.g. "PROJECT_NAME=MyProject")
+# ------------------------------------------------------------------------------
+render_template() {
+    local template_file="$1"
+    local output_file="$2"
+    shift 2
+    
+    local sed_args=()
+    for pair in "$@"; do
+        local key="${pair%%=*}"
+        local val="${pair#*=}"
+        
+        # Escape sed replacement special characters: \, /, and &
+        local escaped_val
+        escaped_val=$(echo -n "$val" | sed -e 's/\\/\\\\/g' -e 's/\//\\\//g' -e 's/&/\\&/g')
+        
+        # Replace {{KEY}}
+        sed_args+=("-e" "s/{{$key}}/$escaped_val/g")
+    done
+    
+    sed "${sed_args[@]}" "$template_file" > "$output_file"
+}

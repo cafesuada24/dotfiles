@@ -56,16 +56,13 @@ done
 cp "$TEMPLATES_DIR/gitignore.cpp" .gitignore
 cp "$TEMPLATES_DIR/Makefile" .
 
-# Template variable replacement using envsubst
-if command -v envsubst &>/dev/null; then
-    CPP_STANDARD="$cpp_std" envsubst < "$TEMPLATES_DIR/clangd" > .clangd
-    PROJECT_NAME="$proj_name_normalized" CPP_STANDARD="$cpp_std" envsubst < "$TEMPLATES_DIR/CMakeLists.txt" > CMakeLists.txt
-else
-    # Fallback if envsubst is not installed: copy raw file
-    echo "Warning: envsubst is not installed. Copying raw configuration templates." >&2
-    cp "$TEMPLATES_DIR/clangd" .clangd
-    cp "$TEMPLATES_DIR/CMakeLists.txt" CMakeLists.txt
-fi
+# Copy template configurations and render dynamic placeholders
+render_template "$TEMPLATES_DIR/clangd" .clangd \
+    "CPP_STANDARD=$cpp_std"
+
+render_template "$TEMPLATES_DIR/CMakeLists.txt" CMakeLists.txt \
+    "PROJECT_NAME=$proj_name_normalized" \
+    "CPP_STANDARD=$cpp_std"
 
 # 4. Initialize Git and Git Flow if requested
 if [[ "$use_git" == "true" ]]; then
