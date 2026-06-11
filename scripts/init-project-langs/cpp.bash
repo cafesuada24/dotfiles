@@ -1,64 +1,75 @@
 #!/usr/bin/env bash
+# ==============================================================================
+# C++ Project Initializer
+# File: init-project-langs/cpp.bash
+#
+# Generates a standard C++ project workspace with include/src/tests structure,
+# configured CMakeLists.txt, Makefile, clangd setup, gitignore, and Git/Git Flow.
+# ==============================================================================
 
-TEMPLATES_DIR=$DOTFILES/templates
+# Source common utilities (paths, git init, yes/no prompt)
+SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
+source "$SCRIPT_DIR/utils.bash" || exit 1
 
-read -p "Directory name (default current directory): " dir 
+# 1. Interactive Prompts
+read -p "Directory name (default current directory): " dir_input
 read -p "Cpp standard (default 20): " cpp_std
-read -p "Use git? ([y]/n) " use_git
+cpp_std="${cpp_std:-20}"
 
-if [[ -z $cpp_std ]]; then
-    cpp_std="20"
-fi
+use_git=false
+use_git_flow=false
 
-if [[ -z $use_git ]]; then
-    use_git='y'
-fi
-
-if [[ -z $dir ]]; then
-    dir=$(pwd)
-else
-    shopt -s extglob
-    dir="${dir//+([[:space:]])/-}"
-    dir="${dir,,}"
-    mkdir -p $dir
-    dir="$(pwd)/$dir"
-fi
-
-cd $dir
-
-try_init_git_flow() {
-    read -p "Use git flow? ([y]/n) " use_git_flow
-    if [[ -z $use_git_flow ]]; then
-        use_git_flow='y'
+if prompt_yes_no "Use git? ([y]/n) " "y"; then
+    use_git=true
+    if prompt_yes_no "Use git flow? ([y]/n) " "y"; then
+        use_git_flow=true
     fi
+fi
 
-    git init
-    git add .
-    git commit -m "Initial commit" &> /dev/null
+# 2. Resolve and Create Project Directory
+project_dir=$(resolve_project_dir "$dir_input") || exit 1
+cd "$project_dir" || exit 1
 
-    case $use_git_flow in
-        [yY] ) git flow init;; 
-        [nN] ) ;;
-        * ) echo "Invalid option";;
-    esac
-
-}
-
+# Extract directory basename for the project/namespace name
 proj_name="${PWD##*/}"
+# Convert directory name to PascalCase (e.g. my-project -> MyProject)
+proj_name_normalized=$(echo "$proj_name" | sed -E 's/(^|_|-)(.)/\U\2/g')
 
-# Convert to snakecase
-proj_name_normalized=$(echo $proj_name | sed -E 's/(^|_|-)(.)/\U\2/g')
-
-mkdir -p include/${proj_name} src tests
+# 3. Create Standard C++ Workspace Folders and Files
+mkdir -p include/"$proj_name" src tests
 touch README.md
-cp $TEMPLATES_DIR/gitignore.cpp .gitignore
-CPP_STANDARD=$cpp_std envsubst < $TEMPLATES_DIR/clangd > .clangd
-PROJECT_NAME=$proj_name_normalized CPP_STANDARD=$cpp_std envsubst < $TEMPLATES_DIR/CMakeLists.txt > CMakeLists.txt
 
-case $use_git in
-    [yY] ) try_init_git_flow;;
-    [nN] ) ;;
-    * ) echo "Invalid option";;
-esac
+# Validate templates existence
+if [[ ! -d "$TEMPLATES_DIR" ]]; then
+    echo "Error: Templates directory not found at $TEMPLATES_DIR" >&2
+    exit 1
+fi
 
-echo "Done."
+# Copy template configurations
+for t in gitignore.cpp Makefile clangd CMakeLists.txt; do
+    if [[ ! -f "$TEMPLATES_DIR/$t" ]]; then
+        echo "Error: Template file $TEMPLATES_DIR/$t not found." >&2
+        exit 1
+    fi
+done
+
+cp "$TEMPLATES_DIR/gitignore.cpp" .gitignore
+cp "$TEMPLATES_DIR/Makefile" .
+
+# Template variable replacement using envsubst
+if command -v envsubst &>/dev/null; then
+    CPP_STANDARD="$cpp_std" envsubst < "$TEMPLATES_DIR/clangd" > .clangd
+    PROJECT_NAME="$proj_name_normalized" CPP_STANDARD="$cpp_std" envsubst < "$TEMPLATES_DIR/CMakeLists.txt" > CMakeLists.txt
+else
+    # Fallback if envsubst is not installed: copy raw file
+    echo "Warning: envsubst is not installed. Copying raw configuration templates." >&2
+    cp "$TEMPLATES_DIR/clangd" .clangd
+    cp "$TEMPLATES_DIR/CMakeLists.txt" CMakeLists.txt
+fi
+
+# 4. Initialize Git and Git Flow if requested
+if [[ "$use_git" == "true" ]]; then
+    init_git "$project_dir" "$use_git_flow"
+fi
+
+echo "Done. C++ project initialized at: $project_dir"
