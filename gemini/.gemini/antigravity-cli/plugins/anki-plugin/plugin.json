@@ -1,0 +1,5 @@
+{
+  "name": "anki-plugin",
+  "version": "1.0.0",
+  "description": "The plugin for interacting with anki."
+}
