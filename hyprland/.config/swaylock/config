@@ -1,0 +1,31 @@
+color=1e1e2e
+
+# Cấu hình vòng tròn nhập mật khẩu
+indicator
+indicator-radius=100
+indicator-thickness=7
+
+# Hiệu ứng khi gõ sai mật khẩu
+bs-hl-color=f38ba8
+caps-lock-bs-hl-color=f38ba8
+caps-lock-key-hl-color=a6e3a1
+
+# Màu sắc vòng tròn (Sử dụng mã màu HEX gồm 8 ký tự: RRGGBBAA)
+inside-color=11111b88
+inside-clear-color=f5e0dc88
+inside-ver-color=89b4fa88
+inside-wrong-color=f38ba888
+
+ring-color=cdd6f4
+ring-clear-color=f5e0dc
+ring-ver-color=89b4fa
+ring-wrong-color=f38ba8
+
+text-color=cdd6f4
+text-clear-color=11111b
+text-ver-color=11111b
+text-wrong-color=11111b
+
+# Các tùy chọn khác
+scaling=fill
+show-failed-attempts
