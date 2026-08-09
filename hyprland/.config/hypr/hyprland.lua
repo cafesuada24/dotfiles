@@ -25,13 +25,6 @@ hl.monitor({
     output   = "",
     mode     = "preferred",
     position = "auto",
-    scale    = "auto",
-})
-
-hl.monitor({
-    output   = "eDP-1",
-    mode     = "preferred",
-    position = "auto",
     scale    = "1",
 })
 
@@ -60,6 +53,7 @@ hl.on("hyprland.start", function ()
    hl.exec_cmd("waybar")
    hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
+
 
 
 -------------------------------
@@ -127,14 +121,14 @@ hl.config({
         inactive_opacity = 1.0,
 
         shadow = {
-            enabled      = true,
+            enabled      = false,
             range        = 4,
             render_power = 3,
             color        = 0xee1a1a1a,
         },
 
         blur = {
-            enabled   = true,
+            enabled   = false,
             size      = 3,
             passes    = 1,
             vibrancy  = 0.1696,
@@ -221,6 +215,7 @@ hl.config({
     misc = {
         force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
+        vrr = 1
     },
 })
 
