@@ -2,7 +2,11 @@
 import = []
 live_config_reload = true
 
+[env]
+TERM = "xterm-256color"
+
 [window]
+decorations = "buttonless"
 padding = { x = 12, y = 12 }
 dynamic_padding = true
 opacity = 0.95
@@ -16,17 +20,17 @@ lines = 30
 size = 12.0
 
 [font.normal]
-family = "FiraCode Nerd Font"
+family = "FiraCode Nerd Font Mono"
 style = "Regular"
 
 [font.bold]
-family = "FiraCode Nerd Font"
+family = "FiraCode Nerd Font Mono"
 style = "Bold"
 
 [font.italic]
-family = "FiraCode Nerd Font"
+family = "FiraCode Nerd Font Mono"
 style = "Italic"
 
-[cursor.primary]
+[cursor]
 style = { shape = "block", blinking = "On"}
 unfocused_hollow = true
