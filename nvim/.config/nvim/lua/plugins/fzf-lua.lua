@@ -6,7 +6,7 @@ return {
     dependencies = {
         {
             dir = '/opt/fzf',
-            buid = './install --bin',
+            build = './install --bin',
         },
 
         -- 'nvim-tree/nvim-web-devicons',
