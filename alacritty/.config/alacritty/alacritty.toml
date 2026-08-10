@@ -31,6 +31,10 @@ style = "Bold"
 family = "FiraCode Nerd Font Mono"
 style = "Italic"
 
+[font.bold_italic]
+family = "FiraCode Nerd Font Mono"
+style = "Bold Italic"
+
 [cursor]
 style = { shape = "block", blinking = "On"}
 unfocused_hollow = true
