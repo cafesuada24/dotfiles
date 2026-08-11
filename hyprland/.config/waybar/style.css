@@ -37,6 +37,7 @@ window#waybar {
 #cpu,
 #memory,
 #disk,
+#gamemode,
 #volume {
   border-radius: 8px;
   padding: 5px 8px;

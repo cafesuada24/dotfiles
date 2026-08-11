@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["hyprland/workspaces", "group/media"],
     "modules-center": ["clock"],
-    "modules-right": ["hyprland/submap", "group/volume", "battery", "bluetooth", "network", "cpu", "disk", "memory"],
+    "modules-right": ["gamemode", "hyprland/submap", "group/volume", "battery", "bluetooth", "network", "cpu", "disk", "memory"],
     "hyprland/window": {
         "max-length": 50
     },
@@ -112,5 +112,17 @@
       "escape": true,
       "interval": 1,
       "tooltip": false
+    },
+    "gamemode": {
+        "format": "{glyph}",
+        "format-alt": "{glyph} {count}",
+        "glyph": "󰊴",
+        "hide-not-running": true,
+        "use-icon": true,
+        "icon-name": "input-gaming-symbolic",
+        "icon-spacing": 4,
+        "icon-size": 20,
+        "tooltip": true,
+        "tooltip-format": "Games running: {count}"
     }
 }
