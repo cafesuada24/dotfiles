@@ -26,7 +26,9 @@ opt.smoothscroll = true
 
 
 -- Wrap
-opt.wrap = false
+opt.wrap = true
+opt.linebreak = true
+opt.breakindent = true
 
 -- Encoding
 opt.encoding = 'utf-8'

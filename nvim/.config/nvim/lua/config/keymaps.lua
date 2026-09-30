@@ -6,6 +6,9 @@ M.init = function()
 
   local opts = { noremap = true, silent = true }
 
+  map({'n', 'v'}, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true})
+  map({'n', 'v'}, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true})
+
   -- Keymappings
   map({ 'i', 'n' }, '<C-c>', '<Esc>', opts)
 
