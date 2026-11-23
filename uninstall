@@ -1,15 +1,58 @@
 #!/usr/bin/env bash
 
-STOW_FOLDERS='zsh,mamba,nvim,starship,claude,gemini,hyprland,alacritty,tmux'
+set -euo pipefail
 
+HOME="${HOME:-/home/$USER}"
 DOTFILES_HOME="$HOME/.dotfiles"
 
-pushd "$DOTFILES_HOME"
-for folder in $(echo $STOW_FOLDERS | sed 's/,/ /g')
-do
-    echo "Removing $folder"
+if [ ! -x  "$(command -v stow)" ]; then
+    echo 'Stow not found! Installing...'
+    sudo apt-get update && sudo apt-get install stow -y
+fi
+
+STOW_FOLDERS=(
+    "zsh" "nvim" "starship" "clangd" "claude" 
+    "gemini" "hyprland" "alacritty" "tmux"
+)
+
+summon_stow() {
+    echo "Stow is not found. Consulting the local merchants..."
+    if command -v brew >/dev/null 2>&1; then
+        brew install stow
+    elif command -v apt-get >/dev/null 2>&1; then
+        sudo apt-get update && sudo apt-get install stow -y
+    elif command -v pacman >/dev/null 2>&1; then
+        sudo pacman -S --noconfirm stow
+    elif command -v dnf >/dev/null 2>&1; then
+        sudo dnf install -y stow
+    else
+        echo "Supported package managers not found! Please install stow and try again." >&2
+        exit 1
+    fi
+}
+
+if ! command -v stow >/dev/null 2>&1; then
+    summon_stow
+fi
+
+if [[ ! -d "$DOTFILES_HOME" ]]; then
+    echo "$DOTFILES_HOME doesn't exist or is not a valid directory. Halted." >&2
+    exit 1
+fi
+
+pushd "$DOTFILES_HOME" >/dev/null
+for folder in "${STOW_FOLDERS[@]}"; do
+    echo "Unbinding: $folder"
     stow -D $folder -v
 done
-popd
+popd >/dev/null
 
-unlink "$DOTFILES_HOME/nvim/.config/nvim/templates"
+NVIM_TEMPLATE_LINK="$DOTFILES_HOME/nvim/.config/nvim/templates"
+if [[ -L "$NVIM_TEMPLATE_LINK" ]]; then
+    rm "$NVIM_TEMPLATE_LINK"
+    echo "The Neovim template bridge is cleanly severed."
+else
+    echo "The Neovim template bridge was not found; passing like the wind."
+fi
+
+echo "The realm is cleansed."

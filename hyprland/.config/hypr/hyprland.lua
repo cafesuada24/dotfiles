@@ -69,6 +69,7 @@ hl.env('HYPRCURSOR_SIZE', '24')
 hl.env('GTX_IM_MODULE', 'fcitx')
 hl.env('QT_IM_MODULE', 'fcitx')
 hl.env('XMODIFIERS', '@im=fcitx')
+hl.env('XDG_MENU_PREFIX', 'arch-')
 
 -----------------------
 ----- PERMISSIONS -----

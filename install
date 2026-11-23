@@ -1,22 +1,57 @@
 #!/usr/bin/env bash
 
-if ! [ -x  "$(command -v stow)" ]; then
+set -euo pipefail
+
+HOME="${HOME:-/home/$USER}"
+DOTFILES_HOME="$HOME/.dotfiles"
+
+if [ ! -x  "$(command -v stow)" ]; then
     echo 'Stow not found! Installing...'
     sudo apt-get update && sudo apt-get install stow -y
 fi
 
-STOW_FOLDERS='zsh,nvim,starship,clangd,claude,gemini,hyprland,alacritty,tmux'
+STOW_FOLDERS=(
+    "zsh" "nvim" "starship" "clangd" "claude" 
+    "gemini" "hyprland" "alacritty" "tmux"
+)
 
-HOME=/home/serein
+summon_stow() {
+    echo "Stow is not found. Consulting the local merchants..."
+    if command -v brew >/dev/null 2>&1; then
+        brew install stow
+    elif command -v apt-get >/dev/null 2>&1; then
+        sudo apt-get update && sudo apt-get install stow -y
+    elif command -v pacman >/dev/null 2>&1; then
+        sudo pacman -S --noconfirm stow
+    elif command -v dnf >/dev/null 2>&1; then
+        sudo dnf install -y stow
+    else
+        echo "Supported package managers not found! Please install stow and try again." >&2
+        exit 1
+    fi
+}
 
-DOTFILES_HOME="$HOME/.dotfiles"
+if ! command -v stow >/dev/null 2>&1; then
+    summon_stow
+fi
 
-pushd "$DOTFILES_HOME"
-for folder in $(echo $STOW_FOLDERS | sed 's/,/ /g')
-do
-	echo "Adding $folder"
-	stow $folder -t $HOME -v
+if [[ ! -d "$DOTFILES_HOME" ]]; then
+    echo "$DOTFILES_HOME doesn't exist or is not a valid directory. Halted." >&2
+    exit 1
+fi
+
+pushd "$DOTFILES_HOME" >/dev/null
+for folder in "${STOW_FOLDERS[@]}"; do 
+	echo "Binding: $folder"
+	stow -R "$folder" -t "$HOME" -v
 done
-popd
 
-ln -s "$DOTFILES_HOME/templates" "$DOTFILES_HOME/nvim/.config/nvim/"
+popd >/dev/null
+
+NVIM_CONFIG_DIR="$DOTFILES_HOME/nvim/.config/nvim"
+if [[ -d "$NVIM_CONFIG_DIR" ]]; then
+    ln -sfn "$DOTFILES_HOME/templates" "$NVIM_CONFIG_DIR/"
+    echo "The Neovim template bridge is forged."
+else
+    echo "Neovim sanctuary not yet built; skipping the template bridge." >&2
+fi
